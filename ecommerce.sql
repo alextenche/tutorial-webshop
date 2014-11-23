@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.5
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 24, 2010 at 09:19 AM
--- Server version: 5.1.44
--- PHP Version: 5.3.2
+-- Host: 127.0.0.1
+-- Generation Time: 23 Noi 2014 la 11:36
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,10 +23,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admins`
+-- Structura de tabel pentru tabelul `admins`
 --
 
-CREATE TABLE `admins` (
+CREATE TABLE IF NOT EXISTS `admins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
@@ -35,18 +36,19 @@ CREATE TABLE `admins` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `admins`
+-- Salvarea datelor din tabel `admins`
 --
 
-INSERT INTO `admins` VALUES(1, 'Sebastian', 'Sulinski', 'sebastian.sulinski@gmail.com', 'e6a866daadb723bd5379bb0322ae3c5168ac7e7fc5fe41e2715c680291b9696b53ddb642262aab58a282a85d6e72cf638333be48679a8e66a0b56593d5953620');
+INSERT INTO `admins` (`id`, `first_name`, `last_name`, `email`, `password`) VALUES
+(1, 'Sebastian', 'Sulinski', 'sebastian.sulinski@gmail.com', 'e6a866daadb723bd5379bb0322ae3c5168ac7e7fc5fe41e2715c680291b9696b53ddb642262aab58a282a85d6e72cf638333be48679a8e66a0b56593d5953620');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `business`
+-- Structura de tabel pentru tabelul `business`
 --
 
-CREATE TABLE `business` (
+CREATE TABLE IF NOT EXISTS `business` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `address` text NOT NULL,
@@ -58,38 +60,41 @@ CREATE TABLE `business` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `business`
+-- Salvarea datelor din tabel `business`
 --
 
-INSERT INTO `business` VALUES(1, 'Show with us!', '16 London Road\r\nBrighton\r\nEast Sussex\r\nBN16 2PL', '0845 0994 565', 'business@businessemail.com', 'businessemail.com', 17.50);
+INSERT INTO `business` (`id`, `name`, `address`, `telephone`, `email`, `website`, `vat_rate`) VALUES
+(1, 'eCommerce', 'Timisoara', '0256 555 555', 'business@businessemail.com', 'businessemail.com', '24.00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Structura de tabel pentru tabelul `categories`
 --
 
-CREATE TABLE `categories` (
+CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `categories`
+-- Salvarea datelor din tabel `categories`
 --
 
-INSERT INTO `categories` VALUES(1, 'Biographies & Autobiographies');
-INSERT INTO `categories` VALUES(2, 'Computers & IT');
-INSERT INTO `categories` VALUES(3, 'Art & Architecture');
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Biographies & Autobiographies'),
+(2, 'Computers & IT'),
+(3, 'Art & Architecture'),
+(4, 'PC Games');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clients`
+-- Structura de tabel pentru tabelul `clients`
 --
 
-CREATE TABLE `clients` (
+CREATE TABLE IF NOT EXISTS `clients` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(150) NOT NULL,
   `last_name` varchar(150) NOT NULL,
@@ -109,18 +114,19 @@ CREATE TABLE `clients` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `clients`
+-- Salvarea datelor din tabel `clients`
 --
 
-INSERT INTO `clients` VALUES(1, 'Sebastian', 'Sulinski', 'Some address', '', 'Bognor Regis', 'West Sussex', 'Post Code', 229, 'sebastian.sulinski@gmail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '2010-12-14 18:27:56', 1, '133493328520101214182756968055345');
+INSERT INTO `clients` (`id`, `first_name`, `last_name`, `address_1`, `address_2`, `town`, `county`, `post_code`, `country`, `email`, `password`, `date`, `active`, `hash`) VALUES
+(1, 'Sebastian', 'Sulinski', 'Some address', '', 'Bognor Regis', 'West Sussex', 'Post Code', 229, 'sebastian.sulinski@gmail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '2010-12-14 18:27:56', 1, '133493328520101214182756968055345');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `countries`
+-- Structura de tabel pentru tabelul `countries`
 --
 
-CREATE TABLE `countries` (
+CREATE TABLE IF NOT EXISTS `countries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `code` varchar(3) DEFAULT NULL,
@@ -128,260 +134,261 @@ CREATE TABLE `countries` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=244 ;
 
 --
--- Dumping data for table `countries`
+-- Salvarea datelor din tabel `countries`
 --
 
-INSERT INTO `countries` VALUES(1, 'Afghanistan', 'AF');
-INSERT INTO `countries` VALUES(2, 'Ãland Islands', 'AX');
-INSERT INTO `countries` VALUES(3, 'Albania', 'AL');
-INSERT INTO `countries` VALUES(4, 'Algeria', 'DZ');
-INSERT INTO `countries` VALUES(5, 'American Samoa', 'AS');
-INSERT INTO `countries` VALUES(6, 'Andorra', 'AD');
-INSERT INTO `countries` VALUES(7, 'Angola', 'AO');
-INSERT INTO `countries` VALUES(8, 'Anguilla', 'AI');
-INSERT INTO `countries` VALUES(9, 'Antarctica', 'AQ');
-INSERT INTO `countries` VALUES(10, 'Antigua And Barbuda', 'AG');
-INSERT INTO `countries` VALUES(11, 'Argentina', 'AR');
-INSERT INTO `countries` VALUES(12, 'Armenia', 'AM');
-INSERT INTO `countries` VALUES(13, 'Aruba', 'AW');
-INSERT INTO `countries` VALUES(14, 'Australia', 'AU');
-INSERT INTO `countries` VALUES(15, 'Austria', 'AT');
-INSERT INTO `countries` VALUES(16, 'Azerbaijan', 'AZ');
-INSERT INTO `countries` VALUES(17, 'Bahamas', 'BS');
-INSERT INTO `countries` VALUES(18, 'Bahrain', 'BH');
-INSERT INTO `countries` VALUES(19, 'Bangladesh', 'BD');
-INSERT INTO `countries` VALUES(20, 'Barbados', 'BB');
-INSERT INTO `countries` VALUES(21, 'Belarus', 'BY');
-INSERT INTO `countries` VALUES(22, 'Belgium', 'BE');
-INSERT INTO `countries` VALUES(23, 'Belize', 'BZ');
-INSERT INTO `countries` VALUES(24, 'Benin', 'BJ');
-INSERT INTO `countries` VALUES(25, 'Bermuda', 'BM');
-INSERT INTO `countries` VALUES(26, 'Bhutan', 'BT');
-INSERT INTO `countries` VALUES(27, 'Bolivia', 'BO');
-INSERT INTO `countries` VALUES(28, 'Bosnia And Herzegovina', 'BA');
-INSERT INTO `countries` VALUES(29, 'Botswana', 'BW');
-INSERT INTO `countries` VALUES(30, 'Bouvet Island', 'BV');
-INSERT INTO `countries` VALUES(31, 'Brazil', 'BR');
-INSERT INTO `countries` VALUES(32, 'British Indian Ocean Territory', 'IO');
-INSERT INTO `countries` VALUES(33, 'Brunei Darussalam', 'BN');
-INSERT INTO `countries` VALUES(34, 'Bulgaria', 'BG');
-INSERT INTO `countries` VALUES(35, 'Burkina Faso', 'BF');
-INSERT INTO `countries` VALUES(36, 'Burundi', 'BI');
-INSERT INTO `countries` VALUES(37, 'Cambodia', 'KH');
-INSERT INTO `countries` VALUES(38, 'Cameroon', 'CM');
-INSERT INTO `countries` VALUES(39, 'Canada', 'CA');
-INSERT INTO `countries` VALUES(40, 'Cape Verde', 'CV');
-INSERT INTO `countries` VALUES(41, 'Cayman Islands', 'KY');
-INSERT INTO `countries` VALUES(42, 'Central African Republic', 'CF');
-INSERT INTO `countries` VALUES(43, 'Chad', 'TD');
-INSERT INTO `countries` VALUES(44, 'Chile', 'CL');
-INSERT INTO `countries` VALUES(45, 'China', 'CN');
-INSERT INTO `countries` VALUES(46, 'Christmas Island', 'CX');
-INSERT INTO `countries` VALUES(47, 'Cocos (keeling) Islands', 'CC');
-INSERT INTO `countries` VALUES(48, 'Colombia', 'CO');
-INSERT INTO `countries` VALUES(49, 'Comoros', 'KM');
-INSERT INTO `countries` VALUES(50, 'Congo', 'CG');
-INSERT INTO `countries` VALUES(51, 'Congo, The Democratic Republic Of', 'CD');
-INSERT INTO `countries` VALUES(52, 'Cook Islands', 'CK');
-INSERT INTO `countries` VALUES(53, 'Costa Rica', 'CR');
-INSERT INTO `countries` VALUES(54, 'Cote D''ivoire', 'CI');
-INSERT INTO `countries` VALUES(55, 'Croatia', 'HR');
-INSERT INTO `countries` VALUES(56, 'Cuba', 'CU');
-INSERT INTO `countries` VALUES(57, 'Cyprus', 'CY');
-INSERT INTO `countries` VALUES(58, 'Czech Republic', 'CZ');
-INSERT INTO `countries` VALUES(59, 'Denmark', 'DK');
-INSERT INTO `countries` VALUES(60, 'Djibouti', 'DJ');
-INSERT INTO `countries` VALUES(61, 'Dominica', 'DM');
-INSERT INTO `countries` VALUES(62, 'Dominican Republic', 'DO');
-INSERT INTO `countries` VALUES(63, 'Ecuador', 'EC');
-INSERT INTO `countries` VALUES(64, 'Egypt', 'EG');
-INSERT INTO `countries` VALUES(65, 'El Salvador', 'SV');
-INSERT INTO `countries` VALUES(66, 'Equatorial Guinea', 'GQ');
-INSERT INTO `countries` VALUES(67, 'Eritrea', 'ER');
-INSERT INTO `countries` VALUES(68, 'Estonia', 'EE');
-INSERT INTO `countries` VALUES(69, 'Ethiopia', 'ET');
-INSERT INTO `countries` VALUES(70, 'Falkland Islands (malvinas)', 'FK');
-INSERT INTO `countries` VALUES(71, 'Faroe Islands', 'FO');
-INSERT INTO `countries` VALUES(72, 'Fiji', 'FJ');
-INSERT INTO `countries` VALUES(73, 'Finland', 'FI');
-INSERT INTO `countries` VALUES(74, 'France', 'FR');
-INSERT INTO `countries` VALUES(75, 'French Guiana', 'GF');
-INSERT INTO `countries` VALUES(76, 'French Polynesia', 'PF');
-INSERT INTO `countries` VALUES(77, 'French Southern Territories', 'TF');
-INSERT INTO `countries` VALUES(78, 'Gabon', 'GA');
-INSERT INTO `countries` VALUES(79, 'Gambia', 'GM');
-INSERT INTO `countries` VALUES(80, 'Georgia', 'GE');
-INSERT INTO `countries` VALUES(81, 'Germany', 'DE');
-INSERT INTO `countries` VALUES(82, 'Ghana', 'GH');
-INSERT INTO `countries` VALUES(83, 'Gibraltar', 'GI');
-INSERT INTO `countries` VALUES(84, 'Greece', 'GR');
-INSERT INTO `countries` VALUES(85, 'Greenland', 'GL');
-INSERT INTO `countries` VALUES(86, 'Grenada', 'GD');
-INSERT INTO `countries` VALUES(87, 'Guadeloupe', 'GP');
-INSERT INTO `countries` VALUES(88, 'Guam', 'GU');
-INSERT INTO `countries` VALUES(89, 'Guatemala', 'GT');
-INSERT INTO `countries` VALUES(90, 'Guernsey', 'GG');
-INSERT INTO `countries` VALUES(91, 'Guinea', 'GN');
-INSERT INTO `countries` VALUES(92, 'Guinea-bissau', 'GW');
-INSERT INTO `countries` VALUES(93, 'Guyana', 'GY');
-INSERT INTO `countries` VALUES(94, 'Haiti', 'HT');
-INSERT INTO `countries` VALUES(95, 'Heard Island And Mcdonald Islands', 'HM');
-INSERT INTO `countries` VALUES(96, 'Holy See (vatican City State)', 'VA');
-INSERT INTO `countries` VALUES(97, 'Honduras', 'HN');
-INSERT INTO `countries` VALUES(98, 'Hong Kong', 'HK');
-INSERT INTO `countries` VALUES(99, 'Hungary', 'HU');
-INSERT INTO `countries` VALUES(100, 'Iceland', 'IS');
-INSERT INTO `countries` VALUES(101, 'India', 'IN');
-INSERT INTO `countries` VALUES(102, 'Indonesia', 'ID');
-INSERT INTO `countries` VALUES(103, 'Iran, Islamic Republic Of', 'IR');
-INSERT INTO `countries` VALUES(104, 'Iraq', 'IQ');
-INSERT INTO `countries` VALUES(105, 'Ireland', 'IE');
-INSERT INTO `countries` VALUES(106, 'Isle Of Man', 'IM');
-INSERT INTO `countries` VALUES(107, 'Israel', 'IL');
-INSERT INTO `countries` VALUES(108, 'Italy', 'IT');
-INSERT INTO `countries` VALUES(109, 'Jamaica', 'JM');
-INSERT INTO `countries` VALUES(110, 'Japan', 'JP');
-INSERT INTO `countries` VALUES(111, 'Jersey', 'JE');
-INSERT INTO `countries` VALUES(112, 'Jordan', 'JO');
-INSERT INTO `countries` VALUES(113, 'Kazakhstan', 'KZ');
-INSERT INTO `countries` VALUES(114, 'Kenya', 'KE');
-INSERT INTO `countries` VALUES(115, 'Kiribati', 'KI');
-INSERT INTO `countries` VALUES(116, 'Korea, Democratic People''s Republic Of', 'KP');
-INSERT INTO `countries` VALUES(117, 'Korea, Republic Of', 'KR');
-INSERT INTO `countries` VALUES(118, 'Kuwait', 'KW');
-INSERT INTO `countries` VALUES(119, 'Kyrgyzstan', 'KG');
-INSERT INTO `countries` VALUES(120, 'Lao People''s Democratic Republic', 'LA');
-INSERT INTO `countries` VALUES(121, 'Latvia', 'LV');
-INSERT INTO `countries` VALUES(122, 'Lebanon', 'LB');
-INSERT INTO `countries` VALUES(123, 'Lesotho', 'LS');
-INSERT INTO `countries` VALUES(124, 'Liberia', 'LR');
-INSERT INTO `countries` VALUES(125, 'Libyan Arab Jamahiriya', 'LY');
-INSERT INTO `countries` VALUES(126, 'Liechtenstein', 'LI');
-INSERT INTO `countries` VALUES(127, 'Lithuania', 'LT');
-INSERT INTO `countries` VALUES(128, 'Luxembourg', 'LU');
-INSERT INTO `countries` VALUES(129, 'Macao', 'MO');
-INSERT INTO `countries` VALUES(130, 'Macedonia, The Former Yugoslav Republic Of', 'MK');
-INSERT INTO `countries` VALUES(131, 'Madagascar', 'MG');
-INSERT INTO `countries` VALUES(132, 'Malawi', 'MW');
-INSERT INTO `countries` VALUES(133, 'Malaysia', 'MY');
-INSERT INTO `countries` VALUES(134, 'Maldives', 'MV');
-INSERT INTO `countries` VALUES(135, 'Mali', 'ML');
-INSERT INTO `countries` VALUES(136, 'Malta', 'MT');
-INSERT INTO `countries` VALUES(137, 'Marshall Islands', 'MH');
-INSERT INTO `countries` VALUES(138, 'Martinique', 'MQ');
-INSERT INTO `countries` VALUES(139, 'Mauritania', 'MR');
-INSERT INTO `countries` VALUES(140, 'Mauritius', 'MU');
-INSERT INTO `countries` VALUES(141, 'Mayotte', 'YT');
-INSERT INTO `countries` VALUES(142, 'Mexico', 'MX');
-INSERT INTO `countries` VALUES(143, 'Micronesia, Federated States Of', 'FM');
-INSERT INTO `countries` VALUES(144, 'Moldova, Republic Of', 'MD');
-INSERT INTO `countries` VALUES(145, 'Monaco', 'MC');
-INSERT INTO `countries` VALUES(146, 'Mongolia', 'MN');
-INSERT INTO `countries` VALUES(147, 'Montserrat', 'MS');
-INSERT INTO `countries` VALUES(148, 'Morocco', 'MA');
-INSERT INTO `countries` VALUES(149, 'Mozambique', 'MZ');
-INSERT INTO `countries` VALUES(150, 'Myanmar', 'MM');
-INSERT INTO `countries` VALUES(151, 'Namibia', 'NA');
-INSERT INTO `countries` VALUES(152, 'Nauru', 'NR');
-INSERT INTO `countries` VALUES(153, 'Nepal', 'NP');
-INSERT INTO `countries` VALUES(154, 'Netherlands', 'NL');
-INSERT INTO `countries` VALUES(155, 'Netherlands Antilles', 'AN');
-INSERT INTO `countries` VALUES(156, 'New Caledonia', 'NC');
-INSERT INTO `countries` VALUES(157, 'New Zealand', 'NZ');
-INSERT INTO `countries` VALUES(158, 'Nicaragua', 'NI');
-INSERT INTO `countries` VALUES(159, 'Niger', 'NE');
-INSERT INTO `countries` VALUES(160, 'Nigeria', 'NG');
-INSERT INTO `countries` VALUES(161, 'Niue', 'NU');
-INSERT INTO `countries` VALUES(162, 'Norfolk Island', 'NF');
-INSERT INTO `countries` VALUES(163, 'Northern Mariana Islands', 'MP');
-INSERT INTO `countries` VALUES(164, 'Norway', 'NO');
-INSERT INTO `countries` VALUES(165, 'Oman', 'OM');
-INSERT INTO `countries` VALUES(166, 'Pakistan', 'PK');
-INSERT INTO `countries` VALUES(167, 'Palau', 'PW');
-INSERT INTO `countries` VALUES(168, 'Palestinian Territory, Occupied', 'PS');
-INSERT INTO `countries` VALUES(169, 'Panama', 'PA');
-INSERT INTO `countries` VALUES(170, 'Papua New Guinea', 'PG');
-INSERT INTO `countries` VALUES(171, 'Paraguay', 'PY');
-INSERT INTO `countries` VALUES(172, 'Peru', 'PE');
-INSERT INTO `countries` VALUES(173, 'Philippines', 'PH');
-INSERT INTO `countries` VALUES(174, 'Pitcairn', 'PN');
-INSERT INTO `countries` VALUES(175, 'Poland', 'PL');
-INSERT INTO `countries` VALUES(176, 'Portugal', 'PT');
-INSERT INTO `countries` VALUES(177, 'Puerto Rico', 'PR');
-INSERT INTO `countries` VALUES(178, 'Qatar', 'QA');
-INSERT INTO `countries` VALUES(179, 'Reunion', 'RE');
-INSERT INTO `countries` VALUES(180, 'Romania', 'RO');
-INSERT INTO `countries` VALUES(181, 'Russian Federation', 'RU');
-INSERT INTO `countries` VALUES(182, 'Rwanda', 'RW');
-INSERT INTO `countries` VALUES(183, 'Saint Helena', 'SH');
-INSERT INTO `countries` VALUES(184, 'Saint Kitts And Nevis', 'KN');
-INSERT INTO `countries` VALUES(185, 'Saint Lucia', 'LC');
-INSERT INTO `countries` VALUES(186, 'Saint Pierre And Miquelon', 'PM');
-INSERT INTO `countries` VALUES(187, 'Saint Vincent And The Grenadines', 'VC');
-INSERT INTO `countries` VALUES(188, 'Samoa', 'WS');
-INSERT INTO `countries` VALUES(189, 'San Marino', 'SM');
-INSERT INTO `countries` VALUES(190, 'Sao Tome And Principe', 'ST');
-INSERT INTO `countries` VALUES(191, 'Saudi Arabia', 'SA');
-INSERT INTO `countries` VALUES(192, 'Senegal', 'SN');
-INSERT INTO `countries` VALUES(193, 'Serbia And Montenegro', 'CS');
-INSERT INTO `countries` VALUES(194, 'Seychelles', 'SC');
-INSERT INTO `countries` VALUES(195, 'Sierra Leone', 'SL');
-INSERT INTO `countries` VALUES(196, 'Singapore', 'SG');
-INSERT INTO `countries` VALUES(197, 'Slovakia', 'SK');
-INSERT INTO `countries` VALUES(198, 'Slovenia', 'SI');
-INSERT INTO `countries` VALUES(199, 'Solomon Islands', 'SB');
-INSERT INTO `countries` VALUES(200, 'Somalia', 'SO');
-INSERT INTO `countries` VALUES(201, 'South Africa', 'ZA');
-INSERT INTO `countries` VALUES(202, 'South Georgia And The South Sandwich Islands', 'GS');
-INSERT INTO `countries` VALUES(203, 'Spain', 'ES');
-INSERT INTO `countries` VALUES(204, 'Sri Lanka', 'LK');
-INSERT INTO `countries` VALUES(205, 'Sudan', 'SD');
-INSERT INTO `countries` VALUES(206, 'Suriname', 'SR');
-INSERT INTO `countries` VALUES(207, 'Svalbard And Jan Mayen', 'SJ');
-INSERT INTO `countries` VALUES(208, 'Swaziland', 'SZ');
-INSERT INTO `countries` VALUES(209, 'Sweden', 'SE');
-INSERT INTO `countries` VALUES(210, 'Switzerland', 'CH');
-INSERT INTO `countries` VALUES(211, 'Syrian Arab Republic', 'SY');
-INSERT INTO `countries` VALUES(212, 'Taiwan, Province Of China', 'TW');
-INSERT INTO `countries` VALUES(213, 'Tajikistan', 'TJ');
-INSERT INTO `countries` VALUES(214, 'Tanzania, United Republic Of', 'TZ');
-INSERT INTO `countries` VALUES(215, 'Thailand', 'TH');
-INSERT INTO `countries` VALUES(216, 'Timor-leste', 'TL');
-INSERT INTO `countries` VALUES(217, 'Togo', 'TG');
-INSERT INTO `countries` VALUES(218, 'Tokelau', 'TK');
-INSERT INTO `countries` VALUES(219, 'Tonga', 'TO');
-INSERT INTO `countries` VALUES(220, 'Trinidad And Tobago', 'TT');
-INSERT INTO `countries` VALUES(221, 'Tunisia', 'TN');
-INSERT INTO `countries` VALUES(222, 'Turkey', 'TR');
-INSERT INTO `countries` VALUES(223, 'Turkmenistan', 'TM');
-INSERT INTO `countries` VALUES(224, 'Turks And Caicos Islands', 'TC');
-INSERT INTO `countries` VALUES(225, 'Tuvalu', 'TV');
-INSERT INTO `countries` VALUES(226, 'Uganda', 'UG');
-INSERT INTO `countries` VALUES(227, 'Ukraine', 'UA');
-INSERT INTO `countries` VALUES(228, 'United Arab Emirates', 'AE');
-INSERT INTO `countries` VALUES(229, 'United Kingdom', 'GB');
-INSERT INTO `countries` VALUES(230, 'United States', 'US');
-INSERT INTO `countries` VALUES(231, 'United States Minor Outlying Islands', 'UM');
-INSERT INTO `countries` VALUES(232, 'Uruguay', 'UY');
-INSERT INTO `countries` VALUES(233, 'Uzbekistan', 'UZ');
-INSERT INTO `countries` VALUES(234, 'Vanuatu', 'VU');
-INSERT INTO `countries` VALUES(235, 'Venezuela', 'VE');
-INSERT INTO `countries` VALUES(236, 'Viet Nam', 'VN');
-INSERT INTO `countries` VALUES(237, 'Virgin Islands, British', 'VG');
-INSERT INTO `countries` VALUES(238, 'Virgin Islands, U.S.', 'VI');
-INSERT INTO `countries` VALUES(239, 'Wallis And Futuna', 'WF');
-INSERT INTO `countries` VALUES(240, 'Western Sahara', 'EH');
-INSERT INTO `countries` VALUES(241, 'Yemen', 'YE');
-INSERT INTO `countries` VALUES(242, 'Zambia', 'ZM');
-INSERT INTO `countries` VALUES(243, 'Zimbabwe', 'ZW');
+INSERT INTO `countries` (`id`, `name`, `code`) VALUES
+(1, 'Afghanistan', 'AF'),
+(2, 'Ãland Islands', 'AX'),
+(3, 'Albania', 'AL'),
+(4, 'Algeria', 'DZ'),
+(5, 'American Samoa', 'AS'),
+(6, 'Andorra', 'AD'),
+(7, 'Angola', 'AO'),
+(8, 'Anguilla', 'AI'),
+(9, 'Antarctica', 'AQ'),
+(10, 'Antigua And Barbuda', 'AG'),
+(11, 'Argentina', 'AR'),
+(12, 'Armenia', 'AM'),
+(13, 'Aruba', 'AW'),
+(14, 'Australia', 'AU'),
+(15, 'Austria', 'AT'),
+(16, 'Azerbaijan', 'AZ'),
+(17, 'Bahamas', 'BS'),
+(18, 'Bahrain', 'BH'),
+(19, 'Bangladesh', 'BD'),
+(20, 'Barbados', 'BB'),
+(21, 'Belarus', 'BY'),
+(22, 'Belgium', 'BE'),
+(23, 'Belize', 'BZ'),
+(24, 'Benin', 'BJ'),
+(25, 'Bermuda', 'BM'),
+(26, 'Bhutan', 'BT'),
+(27, 'Bolivia', 'BO'),
+(28, 'Bosnia And Herzegovina', 'BA'),
+(29, 'Botswana', 'BW'),
+(30, 'Bouvet Island', 'BV'),
+(31, 'Brazil', 'BR'),
+(32, 'British Indian Ocean Territory', 'IO'),
+(33, 'Brunei Darussalam', 'BN'),
+(34, 'Bulgaria', 'BG'),
+(35, 'Burkina Faso', 'BF'),
+(36, 'Burundi', 'BI'),
+(37, 'Cambodia', 'KH'),
+(38, 'Cameroon', 'CM'),
+(39, 'Canada', 'CA'),
+(40, 'Cape Verde', 'CV'),
+(41, 'Cayman Islands', 'KY'),
+(42, 'Central African Republic', 'CF'),
+(43, 'Chad', 'TD'),
+(44, 'Chile', 'CL'),
+(45, 'China', 'CN'),
+(46, 'Christmas Island', 'CX'),
+(47, 'Cocos (keeling) Islands', 'CC'),
+(48, 'Colombia', 'CO'),
+(49, 'Comoros', 'KM'),
+(50, 'Congo', 'CG'),
+(51, 'Congo, The Democratic Republic Of', 'CD'),
+(52, 'Cook Islands', 'CK'),
+(53, 'Costa Rica', 'CR'),
+(54, 'Cote D''ivoire', 'CI'),
+(55, 'Croatia', 'HR'),
+(56, 'Cuba', 'CU'),
+(57, 'Cyprus', 'CY'),
+(58, 'Czech Republic', 'CZ'),
+(59, 'Denmark', 'DK'),
+(60, 'Djibouti', 'DJ'),
+(61, 'Dominica', 'DM'),
+(62, 'Dominican Republic', 'DO'),
+(63, 'Ecuador', 'EC'),
+(64, 'Egypt', 'EG'),
+(65, 'El Salvador', 'SV'),
+(66, 'Equatorial Guinea', 'GQ'),
+(67, 'Eritrea', 'ER'),
+(68, 'Estonia', 'EE'),
+(69, 'Ethiopia', 'ET'),
+(70, 'Falkland Islands (malvinas)', 'FK'),
+(71, 'Faroe Islands', 'FO'),
+(72, 'Fiji', 'FJ'),
+(73, 'Finland', 'FI'),
+(74, 'France', 'FR'),
+(75, 'French Guiana', 'GF'),
+(76, 'French Polynesia', 'PF'),
+(77, 'French Southern Territories', 'TF'),
+(78, 'Gabon', 'GA'),
+(79, 'Gambia', 'GM'),
+(80, 'Georgia', 'GE'),
+(81, 'Germany', 'DE'),
+(82, 'Ghana', 'GH'),
+(83, 'Gibraltar', 'GI'),
+(84, 'Greece', 'GR'),
+(85, 'Greenland', 'GL'),
+(86, 'Grenada', 'GD'),
+(87, 'Guadeloupe', 'GP'),
+(88, 'Guam', 'GU'),
+(89, 'Guatemala', 'GT'),
+(90, 'Guernsey', 'GG'),
+(91, 'Guinea', 'GN'),
+(92, 'Guinea-bissau', 'GW'),
+(93, 'Guyana', 'GY'),
+(94, 'Haiti', 'HT'),
+(95, 'Heard Island And Mcdonald Islands', 'HM'),
+(96, 'Holy See (vatican City State)', 'VA'),
+(97, 'Honduras', 'HN'),
+(98, 'Hong Kong', 'HK'),
+(99, 'Hungary', 'HU'),
+(100, 'Iceland', 'IS'),
+(101, 'India', 'IN'),
+(102, 'Indonesia', 'ID'),
+(103, 'Iran, Islamic Republic Of', 'IR'),
+(104, 'Iraq', 'IQ'),
+(105, 'Ireland', 'IE'),
+(106, 'Isle Of Man', 'IM'),
+(107, 'Israel', 'IL'),
+(108, 'Italy', 'IT'),
+(109, 'Jamaica', 'JM'),
+(110, 'Japan', 'JP'),
+(111, 'Jersey', 'JE'),
+(112, 'Jordan', 'JO'),
+(113, 'Kazakhstan', 'KZ'),
+(114, 'Kenya', 'KE'),
+(115, 'Kiribati', 'KI'),
+(116, 'Korea, Democratic People''s Republic Of', 'KP'),
+(117, 'Korea, Republic Of', 'KR'),
+(118, 'Kuwait', 'KW'),
+(119, 'Kyrgyzstan', 'KG'),
+(120, 'Lao People''s Democratic Republic', 'LA'),
+(121, 'Latvia', 'LV'),
+(122, 'Lebanon', 'LB'),
+(123, 'Lesotho', 'LS'),
+(124, 'Liberia', 'LR'),
+(125, 'Libyan Arab Jamahiriya', 'LY'),
+(126, 'Liechtenstein', 'LI'),
+(127, 'Lithuania', 'LT'),
+(128, 'Luxembourg', 'LU'),
+(129, 'Macao', 'MO'),
+(130, 'Macedonia, The Former Yugoslav Republic Of', 'MK'),
+(131, 'Madagascar', 'MG'),
+(132, 'Malawi', 'MW'),
+(133, 'Malaysia', 'MY'),
+(134, 'Maldives', 'MV'),
+(135, 'Mali', 'ML'),
+(136, 'Malta', 'MT'),
+(137, 'Marshall Islands', 'MH'),
+(138, 'Martinique', 'MQ'),
+(139, 'Mauritania', 'MR'),
+(140, 'Mauritius', 'MU'),
+(141, 'Mayotte', 'YT'),
+(142, 'Mexico', 'MX'),
+(143, 'Micronesia, Federated States Of', 'FM'),
+(144, 'Moldova, Republic Of', 'MD'),
+(145, 'Monaco', 'MC'),
+(146, 'Mongolia', 'MN'),
+(147, 'Montserrat', 'MS'),
+(148, 'Morocco', 'MA'),
+(149, 'Mozambique', 'MZ'),
+(150, 'Myanmar', 'MM'),
+(151, 'Namibia', 'NA'),
+(152, 'Nauru', 'NR'),
+(153, 'Nepal', 'NP'),
+(154, 'Netherlands', 'NL'),
+(155, 'Netherlands Antilles', 'AN'),
+(156, 'New Caledonia', 'NC'),
+(157, 'New Zealand', 'NZ'),
+(158, 'Nicaragua', 'NI'),
+(159, 'Niger', 'NE'),
+(160, 'Nigeria', 'NG'),
+(161, 'Niue', 'NU'),
+(162, 'Norfolk Island', 'NF'),
+(163, 'Northern Mariana Islands', 'MP'),
+(164, 'Norway', 'NO'),
+(165, 'Oman', 'OM'),
+(166, 'Pakistan', 'PK'),
+(167, 'Palau', 'PW'),
+(168, 'Palestinian Territory, Occupied', 'PS'),
+(169, 'Panama', 'PA'),
+(170, 'Papua New Guinea', 'PG'),
+(171, 'Paraguay', 'PY'),
+(172, 'Peru', 'PE'),
+(173, 'Philippines', 'PH'),
+(174, 'Pitcairn', 'PN'),
+(175, 'Poland', 'PL'),
+(176, 'Portugal', 'PT'),
+(177, 'Puerto Rico', 'PR'),
+(178, 'Qatar', 'QA'),
+(179, 'Reunion', 'RE'),
+(180, 'Romania', 'RO'),
+(181, 'Russian Federation', 'RU'),
+(182, 'Rwanda', 'RW'),
+(183, 'Saint Helena', 'SH'),
+(184, 'Saint Kitts And Nevis', 'KN'),
+(185, 'Saint Lucia', 'LC'),
+(186, 'Saint Pierre And Miquelon', 'PM'),
+(187, 'Saint Vincent And The Grenadines', 'VC'),
+(188, 'Samoa', 'WS'),
+(189, 'San Marino', 'SM'),
+(190, 'Sao Tome And Principe', 'ST'),
+(191, 'Saudi Arabia', 'SA'),
+(192, 'Senegal', 'SN'),
+(193, 'Serbia And Montenegro', 'CS'),
+(194, 'Seychelles', 'SC'),
+(195, 'Sierra Leone', 'SL'),
+(196, 'Singapore', 'SG'),
+(197, 'Slovakia', 'SK'),
+(198, 'Slovenia', 'SI'),
+(199, 'Solomon Islands', 'SB'),
+(200, 'Somalia', 'SO'),
+(201, 'South Africa', 'ZA'),
+(202, 'South Georgia And The South Sandwich Islands', 'GS'),
+(203, 'Spain', 'ES'),
+(204, 'Sri Lanka', 'LK'),
+(205, 'Sudan', 'SD'),
+(206, 'Suriname', 'SR'),
+(207, 'Svalbard And Jan Mayen', 'SJ'),
+(208, 'Swaziland', 'SZ'),
+(209, 'Sweden', 'SE'),
+(210, 'Switzerland', 'CH'),
+(211, 'Syrian Arab Republic', 'SY'),
+(212, 'Taiwan, Province Of China', 'TW'),
+(213, 'Tajikistan', 'TJ'),
+(214, 'Tanzania, United Republic Of', 'TZ'),
+(215, 'Thailand', 'TH'),
+(216, 'Timor-leste', 'TL'),
+(217, 'Togo', 'TG'),
+(218, 'Tokelau', 'TK'),
+(219, 'Tonga', 'TO'),
+(220, 'Trinidad And Tobago', 'TT'),
+(221, 'Tunisia', 'TN'),
+(222, 'Turkey', 'TR'),
+(223, 'Turkmenistan', 'TM'),
+(224, 'Turks And Caicos Islands', 'TC'),
+(225, 'Tuvalu', 'TV'),
+(226, 'Uganda', 'UG'),
+(227, 'Ukraine', 'UA'),
+(228, 'United Arab Emirates', 'AE'),
+(229, 'United Kingdom', 'GB'),
+(230, 'United States', 'US'),
+(231, 'United States Minor Outlying Islands', 'UM'),
+(232, 'Uruguay', 'UY'),
+(233, 'Uzbekistan', 'UZ'),
+(234, 'Vanuatu', 'VU'),
+(235, 'Venezuela', 'VE'),
+(236, 'Viet Nam', 'VN'),
+(237, 'Virgin Islands, British', 'VG'),
+(238, 'Virgin Islands, U.S.', 'VI'),
+(239, 'Wallis And Futuna', 'WF'),
+(240, 'Western Sahara', 'EH'),
+(241, 'Yemen', 'YE'),
+(242, 'Zambia', 'ZM'),
+(243, 'Zimbabwe', 'ZW');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Structura de tabel pentru tabelul `orders`
 --
 
-CREATE TABLE `orders` (
+CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `client` int(11) NOT NULL,
   `vat_rate` decimal(5,2) NOT NULL,
@@ -402,18 +409,19 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `orders`
+-- Salvarea datelor din tabel `orders`
 --
 
-INSERT INTO `orders` VALUES(1, 1, 17.50, 16.58, 94.75, 111.33, '2010-12-14 19:20:52', 3, 1, 'asdf', 'Completed', NULL, NULL, 'Some notes about the order');
+INSERT INTO `orders` (`id`, `client`, `vat_rate`, `vat`, `subtotal`, `total`, `date`, `status`, `pp_status`, `txn_id`, `payment_status`, `ipn`, `response`, `notes`) VALUES
+(1, 1, '17.50', '16.58', '94.75', '111.33', '2010-12-14 19:20:52', 3, 1, 'asdf', 'Completed', NULL, NULL, 'Some notes about the order');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders_items`
+-- Structura de tabel pentru tabelul `orders_items`
 --
 
-CREATE TABLE `orders_items` (
+CREATE TABLE IF NOT EXISTS `orders_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order` int(11) NOT NULL,
   `product` int(11) NOT NULL,
@@ -425,18 +433,19 @@ CREATE TABLE `orders_items` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `orders_items`
+-- Salvarea datelor din tabel `orders_items`
 --
 
-INSERT INTO `orders_items` VALUES(1, 1, 19, 18.95, 5);
+INSERT INTO `orders_items` (`id`, `order`, `product`, `price`, `qty`) VALUES
+(1, 1, 19, '18.95', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Structura de tabel pentru tabelul `products`
 --
 
-CREATE TABLE `products` (
+CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
@@ -446,62 +455,70 @@ CREATE TABLE `products` (
   `image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `category` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
--- Dumping data for table `products`
+-- Salvarea datelor din tabel `products`
 --
 
-INSERT INTO `products` VALUES(1, 'Lou Reed''s New York', 'After his first book of photographs was published, Lou Reed told a journalist for The Independent on Sunday that, "I live on intuition and taking pictures is intuitive." Here, we see Lou Reed''s intuitive take on New York, the city that has been the fulcrum of his creative world for decades and with which he has become indelibly identified. We''ve heard about the streets and characters for so long through his words and music, and now we can see it through his eyes. Over 100 of Reed''s photographs comprise New York, an intimate view of what inspires him. Hardcover, 9 x 13.5 in./192 pgs / 100 color.', 16.25, '2010-07-19 22:58:30', 1, '41jvrdnqpcl.-ss500-.jpg');
-INSERT INTO `products` VALUES(2, 'Andy Warhol Prints: A Catalogue Raisonné 1962-1987', 'No one can doubt that Andy Warhol has influenced the American art world both as an artist and as a personality. Feldman and Schellmann''s catalog provides the specialist with a multitude of color images that do much to illuminate Warhol as a printmaker. Unfortunately, the reproductions take up less space than the blank areas surrounding them. These small reproductions are preceded by two brief essays that provide a less-than-adequate introduction to the prints. Geldzahler has only praise for Warhol and dutifully acclaims his ``contribution to art history.'''' Roberta Bernstein''s essay is more substantive; she is more analytical and willing to make critical judgments. Though useful as a catalog of Warhol''s 364 prints, this book is not what it could be. Douglas G. Campbell, Ctr. for Fine Arts, Warner Pacific Coll., Portland, Ore.\r\nCopyright 1985 Reed Business Information, Inc.', 17.50, '2010-07-19 23:01:23', 3, '51msk1xtdbl.-ss500-.jpg');
-INSERT INTO `products` VALUES(3, 'The Autobiography and Sex Life of Andy Warhol', 'Village Voice and Interview cofounder John Wilcock was first drawn into the milieu of Andy Warhol through filmmaker Jonas Mekas, assisting on some of Warhol''s early films, hanging out at his parties and quickly becoming a regular at the Factory. "About six months after I started hanging out at the old, silvery Factory on West 47th Street," he recalls, "[Gerard] Malanga came up to me and asked, ''When are you going to write something about us?''" Already fascinated by Warhol''s persona, Wilcock went to work, interviewing the artist''s closest associates, supporters and superstars. Among these were Malanga, Naomi Levine, Taylor Mead and Ultra Violet, all of whom had been in the earliest films; scriptwriter Ronnie Tavel, and photographer Gretchen Berg; art dealers Sam Green, Ivan Karp, Eleanor Ward and Leo Castelli, and the Metropolitan Museum of Art''s Henry Geldzahler; the poets Charles Henri Ford and Taylor Mead, and the artist Marisol; and the musicians Lou Reed and Nico. Paul Morrissey supplied the title: The Autobiography and Sex Life of Andy Warhol is the first oral biography of the artist. First published in 1971, and pitched against the colorful backdrop of the 1960s, it assembles a prismatic portrait of one of modern art''s least knowable artists during the early years of his fame. The Autobiography and Sex Life is likely the most revealing portrait of Warhol, being composite instead of singular; each of its interviewees offers a piece of the puzzle that was Andy Warhol. This new edition corrects the many errors of the first, and is beautifully designed in a bright, Warholian palette with numerous illustrations.The British-born writer John Wilcock cofounded The Village Voice in 1955, and went on to edit seminal publications such as The East Village Other, Los Angeles Free Press, Other Scenes and (in 1970) Interview, with Andy Warhol. ', 28.56, '2010-07-19 23:03:29', 1, '51yw-ak9hgl.-ss400-.jpg');
-INSERT INTO `products` VALUES(13, 'Inside The Actors Studio - Johnny Depp', 'In one of only a handful of interviews Johnny Depp has ever granted, he brings both his fascinating eccentricity and his deep, uncompromising devotion to the craft of acting to the master s degree candidates of the Actors Studio Drama School at Pace University and to the viewers of Inside the Actors Studio in 125 countries around the world. ', 18.54, '2010-07-19 23:13:48', 1, '41tvgoec72l.-ss500-.jpg');
-INSERT INTO `products` VALUES(14, 'Miles, the Autobiography', 'Miles Davis, with all his faults, flaws and laughable quirks, was still one of the most important musicians of the twentieth century. It takes a book like this where he leaves no stone unturned to make clear the debt we all owe him and his contemporaries, as well as the restless spirit that lead him beyond what he helped to establish as modern jazz. In many ways he shows himself to be, ironically, the archetypal and sterotypical artist simultaneously. Yet his telling of the profound friendships he had with Max Roach and Coltrane, his deep awe and respect but dispassionate eye for the genius and addictions of Charlie Parker, the loves of his life- and what he put them through, and his brutal, courageous hoonesty in general, gives us a gift of his haunting humanity.', 9.68, '2010-07-19 23:19:08', 1, '41pw5c70m-l.-ss500-.jpg');
-INSERT INTO `products` VALUES(16, 'Dali (Taschen Basic Art Series)', 'Surveys the life and work of the Surrealist artist, and describes how his artistic vision transformed great works from earlier periods in art history. ', 18.48, '2010-07-19 23:22:48', 3, '51xqyzh2hcl.-ss500-.jpg');
-INSERT INTO `products` VALUES(17, 'Wicked Cool PHP: Real-World Scripts That Solve Difficult Problems', 'Wicked Cool PHP capitalizes on the success of the "Wicked Cool" series from No Starch Press. Rather than focus on the basics of the language, Wicked Cool PHP provides (and explains) PHP scripts that can be implemented immediately to simplify webmasters'' lives. These include unique scripts for processing credit cards, checking for valid email addresses, templating, overriding PHP''s default settings, and serving dynamic images and text. Readers will also find extensive sections on working with forms, words, and files; ways to harden PHP by closing common security holes; and instructions for keeping data and transactions secure. By exploring working code, readers learn how to customize their webserver''s behavior, prevent spammers from adding annoying comments, scrape information from other web sites, and much more. This is a book that''s sure to appeal to PHP programmers who have been there and done that and who want a book that delivers meaty content, not only promise.', 18.67, '2010-07-19 23:27:01', 2, '515htcskybl.-ss500-.jpg');
-INSERT INTO `products` VALUES(18, 'PHP Objects, Patterns and Practice 3rd Edition', 'This book takes you beyond the PHP basics to the enterprise development practices used by professional programmers. Updated for PHP 5.3 with new sections on closures, namespaces, and continuous integration, this edition will teach you about object features such as abstract classes, reflection, interfaces, and error handling. You''ll also discover object tools to help you learn more about your classes, objects, and methods.\r\n\r\nThen you''ll move into design patterns and the principles that make patterns powerful. You''ll learn both classic design patterns and enterprise and database patterns with easy-to-follow examples.\r\n\r\nFinally, you''ll discover how to put it all into practice to help turn great code into successful projects. You''ll learn how to manage multiple developers with Subversion, and how to build and install using Phing and PEAR. You''ll also learn strategies for automated testing and building, including continuous integration.', 28.91, '2010-07-19 23:28:58', 2, '51s9-bneftl.-ss500-.jpg');
-INSERT INTO `products` VALUES(19, '50 Artists You Should Know: From Giotto to Warhol', 'This vibrant reference guide profiles 50 major artists alongside their representative works. The entries are presented in an eye-catching format that includes brief biographies, time lines, and critical analyses. Additional information helps readers locate the artist''s work online and in museums, a glossary of important terms, and sidebars highlighting relevant movements and techniques. Arranged chronologically, the selection of artists includes every major artistic movement and development since the Gothic period, giving readers a clear understanding of the evolution of the visual arts. Perfect for casual reading or easy reference, this accessible overview is a fun and practical art history lesson that everyone can enjoy. ', 18.95, '2010-07-20 10:45:16', 3, '51c4k9pth4l.-ss500-.jpg');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `date`, `category`, `image`) VALUES
+(1, 'Lou Reed''s New York', 'After his first book of photographs was published, Lou Reed told a journalist for The Independent on Sunday that, "I live on intuition and taking pictures is intuitive." Here, we see Lou Reed''s intuitive take on New York, the city that has been the fulcrum of his creative world for decades and with which he has become indelibly identified. We''ve heard about the streets and characters for so long through his words and music, and now we can see it through his eyes. Over 100 of Reed''s photographs comprise New York, an intimate view of what inspires him. Hardcover, 9 x 13.5 in./192 pgs / 100 color.', '16.25', '2010-07-19 22:58:30', 1, '41jvrdnqpcl.-ss500-.jpg'),
+(2, 'Andy Warhol Prints: A Catalogue Raisonné 1962-1987', 'No one can doubt that Andy Warhol has influenced the American art world both as an artist and as a personality. Feldman and Schellmann''s catalog provides the specialist with a multitude of color images that do much to illuminate Warhol as a printmaker. Unfortunately, the reproductions take up less space than the blank areas surrounding them. These small reproductions are preceded by two brief essays that provide a less-than-adequate introduction to the prints. Geldzahler has only praise for Warhol and dutifully acclaims his ``contribution to art history.'''' Roberta Bernstein''s essay is more substantive; she is more analytical and willing to make critical judgments. Though useful as a catalog of Warhol''s 364 prints, this book is not what it could be. Douglas G. Campbell, Ctr. for Fine Arts, Warner Pacific Coll., Portland, Ore.\r\nCopyright 1985 Reed Business Information, Inc.', '17.50', '2010-07-19 23:01:23', 3, '51msk1xtdbl.-ss500-.jpg'),
+(3, 'The Autobiography and Sex Life of Andy Warhol', 'Village Voice and Interview cofounder John Wilcock was first drawn into the milieu of Andy Warhol through filmmaker Jonas Mekas, assisting on some of Warhol''s early films, hanging out at his parties and quickly becoming a regular at the Factory. "About six months after I started hanging out at the old, silvery Factory on West 47th Street," he recalls, "[Gerard] Malanga came up to me and asked, ''When are you going to write something about us?''" Already fascinated by Warhol''s persona, Wilcock went to work, interviewing the artist''s closest associates, supporters and superstars. Among these were Malanga, Naomi Levine, Taylor Mead and Ultra Violet, all of whom had been in the earliest films; scriptwriter Ronnie Tavel, and photographer Gretchen Berg; art dealers Sam Green, Ivan Karp, Eleanor Ward and Leo Castelli, and the Metropolitan Museum of Art''s Henry Geldzahler; the poets Charles Henri Ford and Taylor Mead, and the artist Marisol; and the musicians Lou Reed and Nico. Paul Morrissey supplied the title: The Autobiography and Sex Life of Andy Warhol is the first oral biography of the artist. First published in 1971, and pitched against the colorful backdrop of the 1960s, it assembles a prismatic portrait of one of modern art''s least knowable artists during the early years of his fame. The Autobiography and Sex Life is likely the most revealing portrait of Warhol, being composite instead of singular; each of its interviewees offers a piece of the puzzle that was Andy Warhol. This new edition corrects the many errors of the first, and is beautifully designed in a bright, Warholian palette with numerous illustrations.The British-born writer John Wilcock cofounded The Village Voice in 1955, and went on to edit seminal publications such as The East Village Other, Los Angeles Free Press, Other Scenes and (in 1970) Interview, with Andy Warhol. ', '28.56', '2010-07-19 23:03:29', 1, '51yw-ak9hgl.-ss400-.jpg'),
+(13, 'Inside The Actors Studio - Johnny Depp', 'In one of only a handful of interviews Johnny Depp has ever granted, he brings both his fascinating eccentricity and his deep, uncompromising devotion to the craft of acting to the master s degree candidates of the Actors Studio Drama School at Pace University and to the viewers of Inside the Actors Studio in 125 countries around the world. ', '18.54', '2010-07-19 23:13:48', 1, '41tvgoec72l.-ss500-.jpg'),
+(14, 'Miles, the Autobiography', 'Miles Davis, with all his faults, flaws and laughable quirks, was still one of the most important musicians of the twentieth century. It takes a book like this where he leaves no stone unturned to make clear the debt we all owe him and his contemporaries, as well as the restless spirit that lead him beyond what he helped to establish as modern jazz. In many ways he shows himself to be, ironically, the archetypal and sterotypical artist simultaneously. Yet his telling of the profound friendships he had with Max Roach and Coltrane, his deep awe and respect but dispassionate eye for the genius and addictions of Charlie Parker, the loves of his life- and what he put them through, and his brutal, courageous hoonesty in general, gives us a gift of his haunting humanity.', '9.68', '2010-07-19 23:19:08', 1, '41pw5c70m-l.-ss500-.jpg'),
+(16, 'Dali (Taschen Basic Art Series)', 'Surveys the life and work of the Surrealist artist, and describes how his artistic vision transformed great works from earlier periods in art history. ', '18.48', '2010-07-19 23:22:48', 3, '51xqyzh2hcl.-ss500-.jpg'),
+(17, 'Wicked Cool PHP: Real-World Scripts That Solve Difficult Problems', 'Wicked Cool PHP capitalizes on the success of the "Wicked Cool" series from No Starch Press. Rather than focus on the basics of the language, Wicked Cool PHP provides (and explains) PHP scripts that can be implemented immediately to simplify webmasters'' lives. These include unique scripts for processing credit cards, checking for valid email addresses, templating, overriding PHP''s default settings, and serving dynamic images and text. Readers will also find extensive sections on working with forms, words, and files; ways to harden PHP by closing common security holes; and instructions for keeping data and transactions secure. By exploring working code, readers learn how to customize their webserver''s behavior, prevent spammers from adding annoying comments, scrape information from other web sites, and much more. This is a book that''s sure to appeal to PHP programmers who have been there and done that and who want a book that delivers meaty content, not only promise.', '18.67', '2010-07-19 23:27:01', 2, '515htcskybl.-ss500-.jpg'),
+(18, 'PHP Objects, Patterns and Practice 3rd Edition', 'This book takes you beyond the PHP basics to the enterprise development practices used by professional programmers. Updated for PHP 5.3 with new sections on closures, namespaces, and continuous integration, this edition will teach you about object features such as abstract classes, reflection, interfaces, and error handling. You''ll also discover object tools to help you learn more about your classes, objects, and methods.\r\n\r\nThen you''ll move into design patterns and the principles that make patterns powerful. You''ll learn both classic design patterns and enterprise and database patterns with easy-to-follow examples.\r\n\r\nFinally, you''ll discover how to put it all into practice to help turn great code into successful projects. You''ll learn how to manage multiple developers with Subversion, and how to build and install using Phing and PEAR. You''ll also learn strategies for automated testing and building, including continuous integration.', '28.91', '2010-07-19 23:28:58', 2, '51s9-bneftl.-ss500-.jpg'),
+(19, '50 Artists You Should Know: From Giotto to Warhol', 'This vibrant reference guide profiles 50 major artists alongside their representative works. The entries are presented in an eye-catching format that includes brief biographies, time lines, and critical analyses. Additional information helps readers locate the artist''s work online and in museums, a glossary of important terms, and sidebars highlighting relevant movements and techniques. Arranged chronologically, the selection of artists includes every major artistic movement and development since the Gothic period, giving readers a clear understanding of the evolution of the visual arts. Perfect for casual reading or easy reference, this accessible overview is a fun and practical art history lesson that everyone can enjoy. ', '18.95', '2010-07-20 10:45:16', 3, '51c4k9pth4l.-ss500-.jpg'),
+(20, 'Dragon Age: Inquisition', 'Select and lead a group of characters into harrowing battles against a myriad of enemies – from earth-shattering High Dragons to demonic forces from the otherworld of the Fade. Go toe-to-toe in visceral, heroic combat as your acolytes engage at your side, or switch to tactical view to coordinate lethal offensives using the combined might of your party. Observe the tangible, visible results of your journey through a living world – build structures, customize outposts, and change the landscape itself as environments are re-honed in the wake of your Inquisition. Helm a party chosen from nine unique, fully-realized characters – each of whom react to your actions and choices differently, crafting complex relationships both with you and with each other. Create your own character from multiple races, customize their appearance, and amalgamate their powers and abilities as the game progresses. Enhanced customization options allow you to pick everything from the color of your follower’s boots to the features of your Inquisition stronghold. Become a change agent in a time of uncertainty and upheaval. Shape the course of your empires, bring war or peace to factions in conflict, and drive the ultimate fate of the Inquisition. Will you bring an end to the cataclysmic anarchy gripping the Dragon Age?', '59.99', '2014-11-01 00:00:00', 4, 'dragon_age_inquisition.jpg'),
+(21, 'World of Warcraft: Warlords of Draenor', 'To scrap with the greatest army Draenor has ever known, you will need your own forces and your own fortress. Build a mighty garrison: an enduring home base integrated seamlessly with the world, not a hiding place far from the tumult. Customize it with functional structures like farms, stables, armories, workshops and more. Lay down trade routes and unlock new quests, gear and pets to support your war for Draenor. Recruit stalwart followers to man your base, and send them to loot dungeons, fulfill missions, and craft items, even if you’re offline. Tame a deadly realm, and build an unbreakable monument to victory.', '49.99', '2014-11-07 00:00:00', 4, 'wow_warlords_of_draenor');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `statuses`
+-- Structura de tabel pentru tabelul `statuses`
 --
 
-CREATE TABLE `statuses` (
+CREATE TABLE IF NOT EXISTS `statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `statuses`
+-- Salvarea datelor din tabel `statuses`
 --
 
-INSERT INTO `statuses` VALUES(1, 'Pending');
-INSERT INTO `statuses` VALUES(2, 'Processing');
-INSERT INTO `statuses` VALUES(3, 'Dispatched');
+INSERT INTO `statuses` (`id`, `name`) VALUES
+(1, 'Pending'),
+(2, 'Processing'),
+(3, 'Dispatched');
 
 --
--- Constraints for dumped tables
+-- Restrictii pentru tabele sterse
 --
 
 --
--- Constraints for table `orders`
+-- Restrictii pentru tabele `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`client`) REFERENCES `clients` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`status`) REFERENCES `statuses` (`id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `orders_items`
+-- Restrictii pentru tabele `orders_items`
 --
 ALTER TABLE `orders_items`
   ADD CONSTRAINT `orders_items_ibfk_1` FOREIGN KEY (`order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `orders_items_ibfk_2` FOREIGN KEY (`product`) REFERENCES `products` (`id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `products`
+-- Restrictii pentru tabele `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

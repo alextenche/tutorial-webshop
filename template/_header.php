@@ -1,9 +1,9 @@
 <?php 
-$objCatalogue = new Catalogue();
-$cats = $objCatalogue->getCategories();
+	$objCatalogue = new Catalogue();
+	$cats = $objCatalogue->getCategories();
 
-$objBusiness = new Business();
-$business = $objBusiness->getBusiness();
+	$objBusiness = new Business();
+	$business = $objBusiness->getBusiness();
 ?>
 <!DOCTYPE html>
 <head>

@@ -42,17 +42,16 @@ class Helper {
 	}
 	
 	
-	// gets the size of the picture
+	// gets the (0 - width, 1 - height, 2 - type, 3 - attributes) of the picture
 	public static function getImgSize($image, $case) {
 		if(is_file($image)) {
-			// 0 - width, 1 - height, 2 - type, 3 - attributes
 			$size = getimagesize($image);
 			return $size[$case];
 		}
 	}
 	
 	
-	
+	// shortens the given string to a given length
 	public static function shortenString($string, $len = 150) {
 		if (strlen($string) > $len) {
 			$string = trim(substr($string, 0, $len));

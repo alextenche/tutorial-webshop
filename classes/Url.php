@@ -53,7 +53,7 @@ class Url {
 		foreach(self::$_params as $key => $value) {
 			$out[] = $key."=".$value;
 		}
-		return "?".implode("&", $out);  // am modificat "/?" in "?"
+		return "/?".implode("&", $out);  // am modificat "/?" in "?"
 		
 	}
 	

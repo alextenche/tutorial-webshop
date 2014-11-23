@@ -11,10 +11,10 @@ class Paging {
 	public $_url;
 	
 	
-
+	// constructor
 	public function __construct($rows, $max = 10) {
 		$this->_records = $rows;
-		$this->_numb_of_records = count($this->_records);
+		$this->_numb_of_records = count($this->_records); // number of pages ?
 		$this->_max_pp = $max;
 		$this->_url = Url::getCurrentUrl(self::$_key);
 		$current = Url::getParam(self::$_key);
@@ -24,12 +24,10 @@ class Paging {
 	}
 
 	
-	
 	// gets the number of pages that will be displayed
 	private function numberOfPages() {
 		$this->_numb_of_pages = ceil($this->_numb_of_records / $this->_max_pp);
 	}
-	
 	
 	
 	// offset property
