@@ -17,13 +17,13 @@ class Dbase{
 	public $_id;
 	
 	
-	
+	// constructor
 	public function __construct(){
 		$this->connect();
 	}
 	
 	
-	
+	// conntect to database
 	private function connect(){
 		$this->_conndb = mysqli_connect($this->_host, $this->_user, $this->_password );
 		
@@ -39,7 +39,7 @@ class Dbase{
 	}
 	
 	
-	
+	// close connection
 	public function close(){
 		if(!mysql_close($this->_conndb)){
 			die("Closing connection failed.");
@@ -47,8 +47,8 @@ class Dbase{
 	}
 	
 	
-	
-	public function escape($value){
+	// remove illegal characters
+	public function escape( $value ){
 		if(function_exists("mysql_real_escape_string")){
 			if(get_magic_quotes_gpc()){
 				$value = stripcslashes($value);
@@ -63,8 +63,8 @@ class Dbase{
 	}
 	
 	
-	
-	public function query($sql){
+	// query the database
+	public function query( $sql ){
 		$this->_last_query = $sql;
 		$result = mysqli_query($this->_conndb, $sql);
 		$this->displayQuery($result);
@@ -72,10 +72,10 @@ class Dbase{
 	}
 	
 	
-	
+	// returns result from query to database
 	public function displayQuery($result){
 		if(!$result){
-			$output = "Database query failed: " . mysql_error() . "<br />";
+			$output = "Database query failed: " . mysql_error() . "<br>";
 			$output .= "Last SQL query was: " . $this->_last_query;
 			die($output);
 		} else {
@@ -85,10 +85,11 @@ class Dbase{
 	}
 	
 	
-	
+	// fetch all
 	public function fetchAll($sql){
 		$result = $this->query($sql);
 		$out = array();
+		
 		while($row = mysqli_fetch_assoc($result)){
 			$out[] = $row;
 		}
@@ -97,18 +98,17 @@ class Dbase{
 	}
 	
 	
-	
+	// return the first record from an array
 	public function fetchOne($sql){
 		$out = $this->fetchAll($sql);
 		return array_shift($out);
 	}
 	
 	
-
+	// return last inserted id
 	public function lastId(){
 		return mysqli_insert_id($this->_conndb);
 	}
-	
 	
 	
 	// prepare insert for new user( or other ? )
@@ -176,9 +176,4 @@ class Dbase{
 		}
 	}
 	
-
-
-	
-	
 }
-?>

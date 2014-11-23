@@ -31,7 +31,6 @@ if(empty($cat)) {
 <div class="catalogue_wrapper">
 	<div class="catalogue_wrapper_left">
 		<?php
-		
 			$image = !empty($row['image']) ? $objCatalogue->_path.$row['image'] : $objCatalogue->_path.'unavailable.png';
 			
 			$width = Helper::getImgSize($image, 0);

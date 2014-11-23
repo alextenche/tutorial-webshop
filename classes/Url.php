@@ -18,15 +18,15 @@ class Url {
 	}
 	
 	
-	
+	// retuns a page or an error page
 	public static function getPage() {
-		$page = self::$_folder.DS.self::cPage().".php";
-		$error = self::$_folder.DS."error.php";
+		$page = self::$_folder . DS . self::cPage() . ".php";
+		$error = self::$_folder . DS . "error.php";
 		return is_file($page) ? $page : $error;
 	}
 	
 	
-	
+	// polulate params array
 	public static function getAll() {
 		if (!empty($_GET)) {
 			foreach($_GET as $key => $value) {

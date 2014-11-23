@@ -1,7 +1,7 @@
 <?php
 class Helper {
 
-	
+	// gets active classes (display an item as active)
 	public static function getActive($page = null) {
 		if(!empty($page)) {
 			if(is_array($page)) {
@@ -42,10 +42,10 @@ class Helper {
 	}
 	
 	
-	
+	// gets the size of the picture
 	public static function getImgSize($image, $case) {
 		if(is_file($image)) {
-			// 0 => width, 1 => height, 2 => type, 3 => attributes
+			// 0 - width, 1 - height, 2 - type, 3 - attributes
 			$size = getimagesize($image);
 			return $size[$case];
 		}

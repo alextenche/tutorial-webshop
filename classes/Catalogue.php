@@ -70,7 +70,7 @@ class Catalogue extends Application {
 	}
 	
 	
-	
+	// gets products from a category
 	public function getProducts($cat) {
 		$sql = "SELECT * FROM `{$this->_table_2}`
 				WHERE `category` = '".$this->db->escape($cat)."'
@@ -79,7 +79,7 @@ class Catalogue extends Application {
 	}
 	
 	
-	
+	// gets one product
 	public function getProduct($id) {
 		$sql = "SELECT * FROM `{$this->_table_2}`
 				WHERE `id` = '".$this->db->escape($id)."'";
