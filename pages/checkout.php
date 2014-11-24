@@ -11,32 +11,11 @@ if(!empty($user)) {
 
 	if($objForm->isPost('first_name')){
 	
-		$objValid->_expected = array(
-			'first_name',
-			'last_name',
-			'address_1',
-			'address_2',
-			'town',
-			'county',
-			'post_code',
-			'country',
-			'email'
-		);
+		$objValid->_expected = array('first_name', 'last_name', 'address_1', 'address_2', 'town', 'county', 'post_code', 'country', 'email');
 		
-		$objValid->_required = array(
-			'first_name',
-			'last_name',
-			'address_1',
-			'town',
-			'county',
-			'post_code',
-			'country',
-			'email'
-		);
+		$objValid->_required = array('first_name', 'last_name', 'address_1', 'town', 'county', 'post_code', 'country', 'email');
 		
-		$objValid->_special = array(
-			'email' => 'email'
-		);
+		$objValid->_special = array('email' => 'email');
 		
 		if($objValid->isValid()){
 			if($objUser->updateUser($objValid->_post, $user['id'])){
@@ -153,10 +132,7 @@ if(!empty($user)) {
 	</form>
 
 <?php 
-	require_once('_header.php');
+	require_once('_footer.php');
 } else {
 	Helper::redirect('page=error');
-}
-	
-	
-	?>
+} ?>

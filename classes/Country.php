@@ -1,6 +1,7 @@
 <?php
 class Country extends Application{
 
+	// gets all countries from database
 	public function getCountries(){
 		$sql = "SELECT * FROM `countries`
 				ORDER BY `name` ASC";
@@ -8,19 +9,14 @@ class Country extends Application{
 	}
 
 	
-	
+	// get one county from database
 	public function getCountry($id = null){
 		if(!empty($id)){
 			$sql = "SELECT * FROM `countries`
 					WHERE `id` = '".$this->db->escape($id)."'";
 			return $this->db->fetchOne($sql);
-		
 		}
-	
 	}
 	
-	
-	
-	
+		
 }
-?>

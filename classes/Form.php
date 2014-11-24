@@ -1,6 +1,7 @@
 <?php
 class Form{
 
+	// check if a field is posted
 	public function isPost($field = null) {
 		if (!empty($field)) {
 			if (isset($_POST[$field])) {
@@ -16,12 +17,10 @@ class Form{
 	}
 	
 	
-	
+	// returns a posted field
 	public function getPost($field = null) {
 		if (!empty($field)) {
-			return $this->isPost($field) ? 
-					strip_tags($_POST[$field]) : 
-					null;
+			return $this->isPost($field) ? strip_tags($_POST[$field]) : null;
 		}
 	}
 	
@@ -47,9 +46,9 @@ class Form{
 		}
 	}
 	
-
+	
+	// used in select country
 	public function getCountriesSelect($record = null){
-		
 		$objCountry = new Country();
 		$countries = $objCountry->getCountries();
 		if(!empty($countries)) {
@@ -72,6 +71,7 @@ class Form{
 	}
 	
 	
+	// used in validation
 	public function getPostArray($expected = null) {
 		$out = array();
 		if ($this->isPost()) {
@@ -91,6 +91,3 @@ class Form{
 	
 
 }
-
-
-?>

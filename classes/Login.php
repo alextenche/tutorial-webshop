@@ -1,8 +1,8 @@
 <?php
 class Login {
 
-	public static $_login_page_front = "/?page=login";
-	public static $_dashboard_front = "/?page=orders";
+	public static $_login_page_front = "?page=login";
+	public static $_dashboard_front = "?page=orders";
 	public static $_login_front = "cid";
 	
 	public static $_login_page_admin = "/ecommerce/admin/";
@@ -96,14 +96,9 @@ class Login {
 			Helper::redirect(self::$_login_page_admin);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+		
+
+	// encrypt the password with sha512
 	public static function string2hash($string = null) {
 		if (!empty($string)) {
 			return hash('sha512', $string);
