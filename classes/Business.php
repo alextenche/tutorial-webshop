@@ -11,6 +11,7 @@ class Business extends Application {
 	}
 	
 	
+	// gets the tax rate (TVA)
 	public function getVatRate() {
 		$business = $this->getBusiness();
 		return $business['vat_rate'];

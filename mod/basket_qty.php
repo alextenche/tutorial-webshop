@@ -14,13 +14,12 @@ if (isset($_POST['qty']) && isset($_POST['id'])) {
 		
 		switch($val) {
 			case 0:
-			Session::removeItem($id);
-			break;
+				Session::removeItem($id);
+				break;
 			default:
-			Session::setItem($id, $val);
+				Session::setItem($id, $val);
 		}
 		
 	}
 	
 }
-?>

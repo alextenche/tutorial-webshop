@@ -4,7 +4,7 @@ class Catalogue extends Application {
 	private $_table = 'categories';
 	private $_table_2 = 'products';
 	public $_path = 'media/catalogue/';
-	public static $_currency = '$dollar;';
+	public static $_currency = '$';
 	
 	
 	

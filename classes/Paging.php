@@ -14,7 +14,7 @@ class Paging {
 	// constructor
 	public function __construct($rows, $max = 10) {
 		$this->_records = $rows;
-		$this->_numb_of_records = count($this->_records); // number of pages ?
+		$this->_numb_of_records = count($this->_records);
 		$this->_max_pp = $max;
 		$this->_url = Url::getCurrentUrl(self::$_key);
 		$current = Url::getParam(self::$_key);
@@ -37,7 +37,7 @@ class Paging {
 	
 	
 	
-	// get records :)
+	// get records for a page
 	public function getRecords() {
 		$out = array();
 		if ($this->_numb_of_pages > 1) {
@@ -56,7 +56,7 @@ class Paging {
 	
 	
 	
-	// navigation first, previous, next, last links
+	// creates paging navigation - first, previous, next, last links
 	private function getLinks() {
 		if ($this->_numb_of_pages > 1) {
 			
@@ -107,16 +107,17 @@ class Paging {
 				$out[] = "<span>Last</span>";
 			}
 			
-			return "<li>".implode("</li><li>", $out)."</li>";
+			return "<li>" . implode("</li><li>", $out) . "</li>";
 			
 		}	
 	}
 	
 	
+	// display the pagination 
 	public function getPaging() {
 		$links = $this->getLinks();
 		if (!empty($links)) {
-			$out  = "<ul class=\"paging\">";
+			$out  = "<ul class='paging'>";
 			$out .= $links;
 			$out .= "</ul>";
 			return $out;
@@ -124,7 +125,4 @@ class Paging {
 	}
 	
 	
-	
-	
-
 }

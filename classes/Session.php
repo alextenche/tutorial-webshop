@@ -1,11 +1,14 @@
 <?php
 class Session{
 
+
+	// set an item in SESSION
 	public static function setItem($id, $qty = 1){
 		$_SESSION['basket'][$id]['qty'] = $qty;
 	}
+
 	
-	
+	// remove an item from SESSION
 	public static function removeItem($id, $qty = null){
 		if($qty != null && $qty < $_SESSION['basket'][$id]['qty']){
 			$_SESSION['basket'][$id]['qty'] = ($_SESSION['basket'][$id]['qty'] - $qty);
@@ -16,6 +19,7 @@ class Session{
 	}
 	
 	
+	// get what is stored in the session with the $name
 	public static function getSession($name = null){
 		if(!empty($name)){
 			return isset($_SESSION[$name]) ? $_SESSION[$name] : null;

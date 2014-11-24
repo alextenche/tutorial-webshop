@@ -15,7 +15,6 @@ if(!empty($session)) {
 	}
 
 }
-
 ?>
 
 <?php if(!empty($out)) { ?>

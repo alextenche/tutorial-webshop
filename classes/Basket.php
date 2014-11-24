@@ -9,7 +9,8 @@ class Basket {
 	public $_vat;
 	public $_total;
 	
-
+	
+	// constructor
 	public function __construct() {
 	
 		$this->_inst_catalogue = new Catalogue();
@@ -45,7 +46,7 @@ class Basket {
 	}
 	
 	
-	
+	// calculates number of items
 	public function noItems() {
 		$value = 0;
 		if (!$this->_empty_basket) {
@@ -56,7 +57,7 @@ class Basket {
 		$this->_number_of_items = $value;
 	}
 	
-	
+	// calculates the subtotal
 	public function subtotal() {
 		$value = 0;
 		if (!$this->_empty_basket) {
@@ -69,7 +70,7 @@ class Basket {
 	}
 	
 	
-	// TVA (VAT)
+	// calculates the tax (TVA/VAT)
 	public function vat() {
 		$value = 0;
 		if (!$this->_empty_basket) {
@@ -79,13 +80,13 @@ class Basket {
 	}
 	
 	
-	// total
+	// calculates the total
 	public function total() {
 		$this->_total = round(($this->_sub_total + $this->_vat), 2);	
 	}
 	
 	
-	// for basket page	
+	// return the total - for basket page
 	public function itemTotal($price = null, $qty = null) {
 		if (!empty($price) && !empty($qty)) {
 			return round(($price * $qty), 2);
@@ -93,7 +94,7 @@ class Basket {
 	}
 	
 	
-	// for basket page
+	// create the remove from basket button for a products
 	public static function removeButton($id = null) {
 		if (!empty($id)) {
 			if (isset($_SESSION['basket'][$id])) {
@@ -105,5 +106,3 @@ class Basket {
 	}
 	
 }
-
-?>

@@ -32,7 +32,7 @@ $(document).ready(function() {
 				refreshSmallBasket();
 			},
 			error: function() {
-				alert('An error has occurred..removeFromBasket');
+				alert('An error has occurred - removeFromBasket');
 			}
 		});
 	}
@@ -40,7 +40,6 @@ $(document).ready(function() {
 	
 	
 	function refreshSmallBasket() {
-	
 		$.ajax({
 			url: 'mod/basket_small_refresh.php',
 			dataType: 'json',
@@ -50,7 +49,7 @@ $(document).ready(function() {
 				});
 			},
 			error: function(data) {
-				alert("An error has occurred..22");
+				alert("An error has occurred - refreshSmallBasket");
 			}
 		});
 	
@@ -67,17 +66,17 @@ $(document).ready(function() {
 				initBinds();
 			},
 			error: function(data) {
-				alert('An error has occurred..33');
+				alert('An error has occurred - refreshBigBasket');
 			}
 		});	
 	}
 	
 	
 	
-	
 	if ($(".add_to_basket").length > 0) {
+	
 		$(".add_to_basket").click(function() {
-			
+		
 			var trigger = $(this);
 			var param = trigger.attr("rel");
 			var item = param.split("_");
@@ -103,7 +102,7 @@ $(document).ready(function() {
 					}
 				},
 				error: function(data) {
-					alert("An error has occurred44");
+					alert("An error has occurred.");
 				}
 			});
 			return false;
@@ -128,7 +127,7 @@ $(document).ready(function() {
 					refreshBigBasket();
 				},
 				error: function() {
-					alert('An error has occurred32');
+					alert('An error has occurred - updateBasket');
 				}
 			});
 		});

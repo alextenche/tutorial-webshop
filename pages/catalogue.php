@@ -49,7 +49,8 @@ if(empty($cat)) {
 		</div>
 
 <?php endforeach; ?>
-			
+
+			<!-- pagination -->
 			<?php echo $objPaging->getPaging();
 			
 		} else {

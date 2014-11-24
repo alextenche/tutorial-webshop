@@ -24,12 +24,12 @@ if(!empty($id)){
 		}
 		
 		echo "<div class=\"rgt\"><h3>".$product['name']."</h3>";
-		echo "<h4><strong>&pound;".$product['price']."</strong></h4>";
+		echo "<h4><strong>". Catalogue::$_currency . $product['price']."</strong></h4>";
 		echo Basket::activeButton($product['id']);
 		echo "</div></div>";
-		echo "<div class=\"dev\">&#160;</div>"; // dashed line ?
+		echo "<div class=\"dev\">&#160;</div>"; 
 		echo "<p>".Helper::encodeHTML($product['description'])."</p>";
-		echo "<div class=\"dev br_td\">&#160;</div>"; // dashed line ?
+		echo "<div class=\"dev br_td\">&#160;</div>"; 
 		echo "<p><a href=\"javascript:history.go(-1)\">Go back</a></p>";
 		require_once('_footer.php');
 		
@@ -37,12 +37,6 @@ if(!empty($id)){
 		require_once('error.php');
 	}
 	
-	
-	
 } else {
 	require_once('error.php');
 }
-
-
-
-?>

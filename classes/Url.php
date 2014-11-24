@@ -38,7 +38,7 @@ class Url {
 	}
 	
 	
-	
+	// used in pagination
 	public static function getCurrentUrl($remove = null) {
 		self::getAll();
 		$out = array();
@@ -51,9 +51,9 @@ class Url {
 			}
 		}
 		foreach(self::$_params as $key => $value) {
-			$out[] = $key."=".$value;
+			$out[] = $key . "=" . $value;
 		}
-		return "/?".implode("&", $out);  // am modificat "/?" in "?"
+		return "?" . implode("&", $out);  // am modificat "/?" in "?"
 		
 	}
 	
