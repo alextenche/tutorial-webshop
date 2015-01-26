@@ -26,9 +26,9 @@ if(empty($cat)) {
 <?php if(!empty($rows)) { ?>
 	<?php foreach($rows as $row) : ?>
 
-		<div class="catalogue_wrapper">
+		<div class="row">
 		
-			<div class="catalogue_wrapper_left">
+			<div class="col-md-3">
 					<?php
 						$image = !empty($row['image']) ? $objCatalogue->_path.$row['image'] : $objCatalogue->_path.'unavailable.png';
 						
@@ -38,15 +38,20 @@ if(empty($cat)) {
 					
 					<a href="?page=catalogue-item&amp;category=<?php echo $category['id']; ?>&amp;id=<?php echo $row['id']; ?>"><img src="<?php echo $image; ?>" alt="<?php echo Helper::encodeHtml($row['name'], 1); ?>" width="<?php echo $width; ?>" /></a>
 			</div>
+
+
 			
-			<div class="catalogue_wrapper_right">
+			<div class="col-md-9">
 				<h4><a href="?page=catalogue-item&amp;category=<?php echo $category['id']; ?>&amp;id=<?php echo $row['id']; ?>"><?php echo Helper::encodeHtml($row['name'], 1); ?></a></h4>
 				<h4>Price: <?php echo Catalogue::$_currency; echo number_format($row['price'], 2); ?></h4>
 				<p><?php echo Helper::shortenString(Helper::encodeHtml($row['description'])); ?></p>
 				<p><?php echo Basket::activeButton($row['id']); ?></p>
 			</div>
+
+
 			
 		</div>
+		<hr>
 
 <?php endforeach; ?>
 
