@@ -53,12 +53,12 @@ class Url {
 		foreach(self::$_params as $key => $value) {
 			$out[] = $key . "=" . $value;
 		}
-		return "?" . implode("&", $out);  // am modificat "/?" in "?"
+		return "?" . implode("&", $out);  // modified "/?" in "?"
 		
 	}
 	
 	
-						   
+	// used in login page
 	public static function getReferrerUrl() {
 		$page = self::getParam(Login::$_referrer);
 		return !empty($page) ? "?page={$page}" : null;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 Noi 2014 la 11:36
+-- Generation Time: 24 Noi 2014 la 19:01
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -111,14 +111,15 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `hash` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `country` (`country`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Salvarea datelor din tabel `clients`
 --
 
 INSERT INTO `clients` (`id`, `first_name`, `last_name`, `address_1`, `address_2`, `town`, `county`, `post_code`, `country`, `email`, `password`, `date`, `active`, `hash`) VALUES
-(1, 'Sebastian', 'Sulinski', 'Some address', '', 'Bognor Regis', 'West Sussex', 'Post Code', 229, 'sebastian.sulinski@gmail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '2010-12-14 18:27:56', 1, '133493328520101214182756968055345');
+(1, 'Sebastian', 'Sulinski', 'Some address', '', 'Bognor Regis', 'West Sussex', 'Post Code', 229, 'sebastian.sulinski@gmail.com', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', '2010-12-14 18:27:56', 1, '133493328520101214182756968055345'),
+(2, 'Alexandru', 'Tenche', 'Timisoara', '', 'Timisoara', 'Timis', '300211', 180, 'alex.tenche@gmail.com', 'd63d0855ebec6a90e1e6e44a7c206ec907828387e130ac84482da5dba6e44989c2946667f00471da59873b92a3974f08dccd89d7f851cdd37000e8fab5b7a81a', '2014-11-24 08:53:02', 1, '1592142581201411240853021923108053');
 
 -- --------------------------------------------------------
 
@@ -455,7 +456,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `category` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Salvarea datelor din tabel `products`
@@ -472,7 +473,9 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `date`, `category`
 (18, 'PHP Objects, Patterns and Practice 3rd Edition', 'This book takes you beyond the PHP basics to the enterprise development practices used by professional programmers. Updated for PHP 5.3 with new sections on closures, namespaces, and continuous integration, this edition will teach you about object features such as abstract classes, reflection, interfaces, and error handling. You''ll also discover object tools to help you learn more about your classes, objects, and methods.\r\n\r\nThen you''ll move into design patterns and the principles that make patterns powerful. You''ll learn both classic design patterns and enterprise and database patterns with easy-to-follow examples.\r\n\r\nFinally, you''ll discover how to put it all into practice to help turn great code into successful projects. You''ll learn how to manage multiple developers with Subversion, and how to build and install using Phing and PEAR. You''ll also learn strategies for automated testing and building, including continuous integration.', '28.91', '2010-07-19 23:28:58', 2, '51s9-bneftl.-ss500-.jpg'),
 (19, '50 Artists You Should Know: From Giotto to Warhol', 'This vibrant reference guide profiles 50 major artists alongside their representative works. The entries are presented in an eye-catching format that includes brief biographies, time lines, and critical analyses. Additional information helps readers locate the artist''s work online and in museums, a glossary of important terms, and sidebars highlighting relevant movements and techniques. Arranged chronologically, the selection of artists includes every major artistic movement and development since the Gothic period, giving readers a clear understanding of the evolution of the visual arts. Perfect for casual reading or easy reference, this accessible overview is a fun and practical art history lesson that everyone can enjoy. ', '18.95', '2010-07-20 10:45:16', 3, '51c4k9pth4l.-ss500-.jpg'),
 (20, 'Dragon Age: Inquisition', 'Select and lead a group of characters into harrowing battles against a myriad of enemies – from earth-shattering High Dragons to demonic forces from the otherworld of the Fade. Go toe-to-toe in visceral, heroic combat as your acolytes engage at your side, or switch to tactical view to coordinate lethal offensives using the combined might of your party. Observe the tangible, visible results of your journey through a living world – build structures, customize outposts, and change the landscape itself as environments are re-honed in the wake of your Inquisition. Helm a party chosen from nine unique, fully-realized characters – each of whom react to your actions and choices differently, crafting complex relationships both with you and with each other. Create your own character from multiple races, customize their appearance, and amalgamate their powers and abilities as the game progresses. Enhanced customization options allow you to pick everything from the color of your follower’s boots to the features of your Inquisition stronghold. Become a change agent in a time of uncertainty and upheaval. Shape the course of your empires, bring war or peace to factions in conflict, and drive the ultimate fate of the Inquisition. Will you bring an end to the cataclysmic anarchy gripping the Dragon Age?', '59.99', '2014-11-01 00:00:00', 4, 'dragon_age_inquisition.jpg'),
-(21, 'World of Warcraft: Warlords of Draenor', 'To scrap with the greatest army Draenor has ever known, you will need your own forces and your own fortress. Build a mighty garrison: an enduring home base integrated seamlessly with the world, not a hiding place far from the tumult. Customize it with functional structures like farms, stables, armories, workshops and more. Lay down trade routes and unlock new quests, gear and pets to support your war for Draenor. Recruit stalwart followers to man your base, and send them to loot dungeons, fulfill missions, and craft items, even if you’re offline. Tame a deadly realm, and build an unbreakable monument to victory.', '49.99', '2014-11-07 00:00:00', 4, 'wow_warlords_of_draenor');
+(21, 'World of Warcraft: Warlords of Draenor', 'To scrap with the greatest army Draenor has ever known, you will need your own forces and your own fortress. Build a mighty garrison: an enduring home base integrated seamlessly with the world, not a hiding place far from the tumult. Customize it with functional structures like farms, stables, armories, workshops and more. Lay down trade routes and unlock new quests, gear and pets to support your war for Draenor. Recruit stalwart followers to man your base, and send them to loot dungeons, fulfill missions, and craft items, even if you’re offline. Tame a deadly realm, and build an unbreakable monument to victory.', '49.99', '2014-11-07 00:00:00', 4, 'wow_warlords_of_draenor.jpg'),
+(22, 'Metro Redux', ' The Metro Redux bundle features both Metro 2033 Redux and Metro: Last Light Redux. Both games have been remastered in the latest 4A Engine, and tout two unique unique play styles - Spartan and Survival - plus the legendary Ranger Mode.', '24.99', '2014-11-08 00:00:00', 4, 'metro_redux.jpg'),
+(23, 'Dark Souls II: Crown of the Ivory King', 'The 3rd of three large-scale DLC additions to the Dark Souls II game includes new stages, maps, boss characters, weapons and armor. In this third DLC, players find themselves in a world shining bright with the glow of treacherous ice.', '35.99', '2014-11-18 00:00:00', 4, 'dark_souls_2.jpg');
 
 -- --------------------------------------------------------
 

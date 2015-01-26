@@ -63,7 +63,6 @@ class Helper {
 	}
 	
 	
-	
 	// redirect to url passed as paramater
 	public static function redirect($url = null) {
 		if (!empty($url)) {
@@ -73,7 +72,6 @@ class Helper {
 	}
 	
 	
-	
 	// sets the date for new user registration
 	public static function setDate($case = null, $date = null) {
 		
@@ -81,19 +79,19 @@ class Helper {
 		
 		switch($case) {
 			case 1:
-			// 01/01/2010
-			return date('d/m/Y', $date);
-			break;
+				// 01/01/2010
+				return date('d/m/Y', $date);
+				break;
 			case 2:
-			// Monday, 1st January 2010, 09:30:56
-			return date('l, jS F Y, H:i:s', $date);
-			break;
+				// Monday, 1st January 2010, 09:30:56
+				return date('l, jS F Y, H:i:s', $date);
+				break;
 			case 3:
-			// 2010-01-01-09-30-56
-			return date('Y-m-d-H-i-s', $date);
-			break;
+				// 2010-01-01-09-30-56
+				return date('Y-m-d-H-i-s', $date);
+				break;
 			default:
-			return date('Y-m-d H:i:s', $date);
+				return date('Y-m-d H:i:s', $date);
 		}
 	
 	}

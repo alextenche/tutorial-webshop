@@ -4,7 +4,6 @@
 
 <p>Thank you for registering with us.<br />
 In order to proceed uou have to activate your account by clicking 
-on the link, which we have sent you by email.
-</p>
+on the link, which we have sent you by email.</p>
 
 <?php require_once('_footer.php');?>

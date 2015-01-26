@@ -57,7 +57,7 @@ class Validation {
 	}
 	
 	
-	// 
+	// loops trough the post and adds teh values to ap post array
 	public function process() {
 		if ($this->objForm->isPost() && !empty($this->_required)) {
 			// get only expected fields - remove all other ones

@@ -4,7 +4,8 @@ class User extends Application{
 	private $_table = "clients";
 	public $_id;
 	
-		
+	
+	// check if user exista and is active in database
 	public function isUser($email, $password) {
 		$password = Login::string2hash($password);
 		$sql = "SELECT * FROM `{$this->_table}`
@@ -27,14 +28,14 @@ class User extends Application{
 			$this->db->prepareInsert($params);
 			if ($this->db->insert($this->_table)) {
 				
-				// send email
+				// data for send email
 				$objEmail = new Email();
 				if ($objEmail->process(1, array(
-					'email'			=> $params['email'],
-					'first_name'	=> $params['first_name'],
-					'last_name'		=> $params['last_name'],
-					'password'		=> $password,
-					'hash'			=> $params['hash']
+					'email'		 => $params['email'],
+					'first_name' => $params['first_name'],
+					'last_name'	 => $params['last_name'],
+					'password'	 => $password,
+					'hash'		 => $params['hash']
 				))) {
 					return true;
 				}

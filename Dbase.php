@@ -1,10 +1,10 @@
 <?php
 class Dbase{
 
-	private $_host = "localhost";
-	private $_user = "root";
-	private $_password = "";
-	private $_name = "eCommerce";
+	private $_host = "mysql.hostinger.ro";
+	private $_user = "u326496103_gen";
+	private $_password = "termopane";
+	private $_name = "u326496103_gen";
 	
 	private $_conndb = false;
 	public $_last_query = null;
@@ -27,14 +27,14 @@ class Dbase{
 	private function connect(){
 	
 		$this->_conndb = mysqli_connect($this->_host, $this->_user, $this->_password, $this->_name);		
-		mysqli_set_charset($this->_conndb, "utf8");
+		//mysqli_set_charset($this->_conndb, "utf8");
 		
 	}
 	
 	
 	// close connection
 	public function close(){
-		if(!mysqli_close($this->_conndb)){
+		if(!mysql_close($this->_conndb)){
 			die("Closing connection failed.");
 		}
 	}
@@ -61,9 +61,6 @@ class Dbase{
 		$this->_last_query = $sql;
 		$result = mysqli_query($this->_conndb, $sql);
 		$this->displayQuery($result);
-		
-		
-		
 		return $result;
 	}
 	
