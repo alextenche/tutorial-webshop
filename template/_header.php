@@ -34,6 +34,25 @@
 	background: #333333 !important;
 	color: #fff !important;
 }
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.container {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+    height: 50px; /* .push must be the same height as .footer */
+}
+.panel-heading-green{
+	background: #3b7e14 !important;
+	color: #fff !important;
+}
 	</style>
 </head>
 
@@ -43,7 +62,7 @@
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="/" class="navbar-brand"><?php echo $business['name']; ?></a>
+				<a href="/eCommerce/" class="navbar-brand"><?php echo $business['name']; ?></a>
 			</div>
 
 			<div class="collapse navbar-collapse">
@@ -91,15 +110,16 @@
 						</h3>
 					</div>
 					<!--List group-->
-					<ul class="list-group">
-						<li class="list-group-item"><a href="#">Gaming Consoles</a></li>
-						<li class="list-group-item"><a href="#">Xbox One Games</a></li>
-						<li class="list-group-item"><a href="#">Playstation 4 Games</a></li>
-						<li class="list-group-item"><a href="#">Nintendo Wii U Games</a></li>
-						<li class="list-group-item"><a href="#">Xbox 360 Games</a></li>
-						<li class="list-group-item"><a href="#">Playstation 3 Games</a></li>
-						<li class="list-group-item"><a href="#">Nintendo Wii Games</a></li>
-						<li class="list-group-item"><a href="#">Other Console Games</a></li>
+					<ul class="list-group" id="navigation">
+					<?php foreach($cats as $cat) :
+					echo "<li class='list-group-item'><a href=\"?page=catalogue&amp;category=".$cat['id']."\"";
+					echo Helper::getActive(array('category' => $cat['id']));
+					echo ">";
+					echo Helper::encodeHtml($cat['name']);
+					echo "</a></li>";
+				endforeach; ?>
+						
+						<!--<li class="list-group-item"><a href="#">Other Console Games</a></li>-->
 					</ul>
 				</div>
 

@@ -12,9 +12,9 @@ if ( isset($_POST['job']) && isset($_POST['id']) ) {
 	$product = $objCatalogue->getProduct($id);
 	
 	if (!empty($product)) {
-	
+
 		switch($job) {
-		
+
 			case 0:
 				Session::removeItem($id);
 				$out['job'] = 1;
@@ -24,10 +24,8 @@ if ( isset($_POST['job']) && isset($_POST['id']) ) {
 				Session::setItem($id);
 				$out['job'] = 0;
 				break;
-		
+
 		}
 		echo json_encode($out);
-	
 	}
-
 }

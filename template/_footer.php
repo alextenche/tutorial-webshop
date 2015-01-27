@@ -2,7 +2,9 @@
 		<div class="cl">&#160;</div>
 	</div>
 </div>
+</div>
 
+ <div class="push"></div>
 
 <div class="row footer">
         <div class="container">
