@@ -23,23 +23,23 @@
   <!-- Table -->
   <table class="table">
 
-    <tbody>
+    <tbody id="basket_left">
           <tr>
             
             <td>No. of items:</td>
-            <td><span><?php echo $objBasket->_number_of_items; ?></span></td>
+            <td class="bl_ti"><span><?php echo $objBasket->_number_of_items; ?></span></td>
           
           </tr>
           <tr>
             
             <td>Sub-total:</td>
-            <td><span><?php echo $objBasket->_number_of_items; ?></span></td>
+            <td class="bl_st"><?php echo Catalogue::$_currency; ?><span><?php echo number_format($objBasket->_sub_total, 2); ?></span></td>
           
           </tr>
           <tr>
             
             <td>TVA (<span><?php echo $objBasket->_vat_rate; ?></span>%):</td>
-            <td><span><?php echo $objBasket->_number_of_items; ?></span></td>
+            <td><?php echo Catalogue::$_currency; ?><span><?php echo number_format($objBasket->_vat, 2); ?></span></td>
           
           </tr>
           <tr>
@@ -53,3 +53,34 @@
   
   </table>
 </div>
+
+
+<div class="cart-block" style="background: #333;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius:5px;">
+          <form action="cart/update" method="post">
+            <table cellpadding="6" cellspacing="1" style="width:100%" border="0">
+              <tr>
+                <td>No. of items:</td>
+                <td class="bl_ti"><span><?php echo $objBasket->_number_of_items; ?></span></td>
+              </tr>
+              <tr>
+                <td>Sub-total:</td>
+                <td class="bl_st"><?php echo Catalogue::$_currency; ?><span><?php echo number_format($objBasket->_sub_total, 2); ?></span></td>
+              </tr>
+              <tr>
+                <td>TVA (<span><?php echo $objBasket->_vat_rate; ?></span>%):</td>
+                <td><?php echo Catalogue::$_currency; ?><span><?php echo number_format($objBasket->_vat, 2); ?></span></td>
+              </tr>
+              <tr>
+                <td>Total (inc):</td>
+            <td><span><?php echo $objBasket->_number_of_items; ?></span></td>
+              </tr>
+            </table>
+            <br>
+            <p><button class="btn btn-default" type="submit">Update Cart</button>
+            <a class="btn btn-default" href="cart">Go To Cart</a></p>
+          </form>
+        </div>

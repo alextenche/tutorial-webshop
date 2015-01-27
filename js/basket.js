@@ -82,7 +82,7 @@ $(document).ready(function() {
 			var item = param.split("_");
 			
 			$.ajax({
-				type: 'POST',
+				type: 'post',
 				url: 'mod/basket.php',
 				dataType: 'json',
 				data: ({ id : item[0], job : item[1] }),
