@@ -13,3 +13,43 @@
 <div class="dev br_td">&#160;</div>
 <p><a href="?page=basket">View Basket</a> | <a href="?page=checkout">Checkout</a></p>
 <div class="dev br_td">&#160;</div>
+
+
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Your Basket</div>
+
+  <!-- Table -->
+  <table class="table">
+
+    <tbody>
+          <tr>
+            
+            <td>No. of items:</td>
+            <td><span><?php echo $objBasket->_number_of_items; ?></span></td>
+          
+          </tr>
+          <tr>
+            
+            <td>Sub-total:</td>
+            <td><span><?php echo $objBasket->_number_of_items; ?></span></td>
+          
+          </tr>
+          <tr>
+            
+            <td>TVA (<span><?php echo $objBasket->_vat_rate; ?></span>%):</td>
+            <td><span><?php echo $objBasket->_number_of_items; ?></span></td>
+          
+          </tr>
+          <tr>
+            
+            <td>Total (inc):</td>
+            <td><span><?php echo $objBasket->_number_of_items; ?></span></td>
+          
+          </tr>
+        </tbody>
+  
+  
+  </table>
+</div>

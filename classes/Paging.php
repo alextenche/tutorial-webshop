@@ -64,9 +64,9 @@ class Paging {
 			
 			// first link
 			if ($this->_current > 1) {
-				$out[] = "<a href=\"".$this->_url."\">First</a>";
+				$out[] = "<a href=\"".$this->_url."\" >First</a>";
 			} else {
-				$out[] = "<span>First</span>";
+				$out[] = "<span style='color:#ccc'>First</span>";
 			}
 			
 			
@@ -82,7 +82,7 @@ class Paging {
 				$out[] = "<a href=\"{$url}\">Previous</a>";
 				
 			} else {
-				$out[] = "<span>Previous</span>";
+				$out[] = "<span style='color:#ccc'>Previous</span>";
 			}
 			
 			
@@ -95,7 +95,7 @@ class Paging {
 				$out[] = "<a href=\"{$url}\">Next</a>";
 				
 			} else {
-				$out[] = "<span>Next</span>";
+				$out[] = "<span style='color:#ccc'>Next</span>";
 			}
 			
 			
@@ -104,7 +104,7 @@ class Paging {
 				$url = $this->_url."&amp;".self::$_key."=".$this->_numb_of_pages;
 				$out[] = "<a href=\"{$url}\">Last</a>";
 			} else {
-				$out[] = "<span>Last</span>";
+				$out[] = "<span style='color:#ccc'>Last</span>";
 			}
 			
 			return "<li>" . implode("</li><li>", $out) . "</li>";
@@ -117,12 +117,43 @@ class Paging {
 	public function getPaging() {
 		$links = $this->getLinks();
 		if (!empty($links)) {
-			$out  = "<ul class='paging'>";
+			$out  = '<ul class="pagination">';
 			$out .= $links;
 			$out .= "</ul>";
 			return $out;
 		}
 	}
+
+
+
+/*<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1111</a></li>
+    <li><a href="#">2222</a></li>
+    <li><a href="#">3333</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>*/
+
+
+
+
+
+
+
+
+
 	
 	
 }

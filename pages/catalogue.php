@@ -21,7 +21,8 @@ if(empty($cat)) {
 		require_once("_header.php");
 ?>
 
-<h1>Catalogue :: <?php echo $category['name']; ?></h1>
+<h1>Calalogue <span class="label label-primary"><?php echo $category['name']; ?></span></h1>
+<hr>
 
 <?php if(!empty($rows)) { ?>
 	<?php foreach($rows as $row) : ?>
