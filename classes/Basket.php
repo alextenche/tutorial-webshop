@@ -37,7 +37,7 @@ class Basket {
 			$label = "Add to basket";
 		}
 		
-		$out  = "<a href=\"#\" class=\"add_to_basket";
+		$out  = "<a href=\"#\" class=\"add_to_basket btn btn-primary";
 		$out .= $id == 0 ? " red" : null;
 		$out .= "\" rel=\"";
 		$out .= $sess_id."_".$id;
@@ -56,6 +56,7 @@ class Basket {
 		}
 		$this->_number_of_items = $value;
 	}
+
 	
 	// calculates the subtotal
 	public function subtotal() {
@@ -98,7 +99,7 @@ class Basket {
 	public static function removeButton($id = null) {
 		if (!empty($id)) {
 			if (isset($_SESSION['basket'][$id])) {
-				$out  = "<a href=\"#\" class=\"remove_basket red";
+				$out  = "<a href=\"#\" class=\"btn btn-danger remove_basket red";
 				$out .= "\" rel=\"{$id}\">Remove</a>";
 				return $out;
 			}

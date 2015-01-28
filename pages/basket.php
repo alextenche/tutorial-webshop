@@ -12,15 +12,17 @@ if(!empty($session)) {
 	}
 }
 
-require_once('_header.php'); 
-?>
+require_once('_header.php'); ?>
 
-<h1>Basket</h1>
-
-<?php if(!empty($out)) { ?>
-	<div id="big_basket">
-		<form action="" method="post" id="frm_basket">
-			<table cellpadding="0" cellspacing="0" border="0" class="tbl_repeat">
+<div class="panel panel-default">
+	<div class="panel-heading panel-heading-green">
+		<h3 class="panel-title">Your Basket</h3>
+	</div>
+	<div class="panel-body">
+		<?php if(!empty($out)) { ?>
+			<div id="big_basket">
+				<form action="" method="post" id="frm_basket">
+					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped tbl_repeat">
 				<tr>
 					<th>Item</th>
 					<th class="ta_r">Qty</th>
@@ -60,17 +62,17 @@ require_once('_header.php');
 	
 	<div class="dev br_td">&#160;</div>
 	
-	<div class="sbm sbm_blue fl_r">
+	<div class="btn btn-default sbm sbm_blue fl_r">
 		<a href="?page=checkout" class="btn">Checkout</a>
 	</div>
 	
-	<div class="sbm sbm_blue fl_l update_basket">
+	<div class="btn btn-default sbm sbm_blue fl_l update_basket">
 		<span class="btn">Update</span>
 	</div>
 	
 	
 	</form>
-
+	</div>
 </div>
 <?php } else { ?>
 

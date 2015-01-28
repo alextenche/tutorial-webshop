@@ -105,10 +105,9 @@ html, body {
 
 			<div class="panel panel-default panel-list">
 					<div class="panel-heading panel-heading-dark">
-						<h3 class="panel-title">
-							Categories
-						</h3>
+						<h3 class="panel-title">Categories</h3>
 					</div>
+
 					<!--List group-->
 					<ul class="list-group" id="navigation">
 					<?php foreach($cats as $cat) :
@@ -124,18 +123,7 @@ html, body {
 				</div>
 
 
-			<?php if (!empty($cats)) : ?>
-				<h2>Categories</h2>
-				<ul id="navigation">
-				<?php foreach($cats as $cat) :
-					echo "<li><a href=\"?page=catalogue&amp;category=".$cat['id']."\"";
-					echo Helper::getActive(array('category' => $cat['id']));
-					echo ">";
-					echo Helper::encodeHtml($cat['name']);
-					echo "</a></li>";
-				endforeach; ?>
-				</ul>
-			<?php endif; ?>					
+							
 		</div>
 
 

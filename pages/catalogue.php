@@ -46,19 +46,32 @@ if(empty($cat)) {
 							<h4><a href="?page=catalogue-item&amp;category=<?php echo $category['id']; ?>&amp;id=<?php echo $row['id']; ?>"><?php echo Helper::encodeHtml($row['name'], 1); ?></a></h4>
 							<h4>Price: <?php echo Catalogue::$_currency; echo number_format($row['price'], 2); ?></h4>
 							<p><?php echo Helper::shortenString(Helper::encodeHtml($row['description'])); ?></p>
-							<p class="btn btn-info"><?php echo Basket::activeButton($row['id']); ?></p>
+							<p><?php echo Basket::activeButton($row['id']); ?></p>
 						</div>
 
 					</div>
 					<hr>
 
 				<?php endforeach; ?>
+
+				<!-- pagination -->
+				<div class="row">
+    				<div class="col-md-8 col-md-offset-4">
+    					<?php echo $objPaging->getPaging();?>
+
+    				</div>
+				</div>
+
+
+
+			
+				
+			
 			</div>
 
-			<!-- pagination -->
-			<?php echo $objPaging->getPaging();
+			
 
-		} else {
+		<?php } else {
 			?>
 			<p>There are no products in this category.</p>
 			<?php		

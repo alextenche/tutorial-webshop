@@ -117,9 +117,12 @@ class Paging {
 	public function getPaging() {
 		$links = $this->getLinks();
 		if (!empty($links)) {
-			$out  = '<ul class="pagination">';
+
+
+
+			$out  = '<div class="pagination text-center"><ul class="pagination">';
 			$out .= $links;
-			$out .= "</ul>";
+			$out .= "</ul></div>";
 			return $out;
 		}
 	}
