@@ -111,9 +111,7 @@ $(document).ready(function() {
 	}
 	
 	
-	
-	
-	
+		
 	function updateBasket() {
 		$('#frm_basket :input').each(function() {
 			var sid = $(this).attr('id').split('-');

@@ -15,10 +15,10 @@ class Email{
 		$this->objMailer->Host = 'smtp.gmail.com';       
 		$this->objMailer->Port = 465;
 		$this->objMailer->SMTPSecure = 'ssl';
-		$this->objMailer->Username = 'alex.tenche@gmail.com';
-		$this->objMailer->Password = 'andreiplesu';
-		$this->objMailer->SetFrom('alex.tenche@gmail.com', 'eCommerce');
-		$this->objMailer->AddReplyTo('alex.tenche@gmail.com', 'eCommerce');	
+		$this->objMailer->Username = 'your mail acount here';
+		$this->objMailer->Password = 'your mail password here';
+		$this->objMailer->SetFrom('your mail acount here', 'eCommerce');
+		$this->objMailer->AddReplyTo('your mail acount here', 'eCommerce');	
 	}
 	
 	
