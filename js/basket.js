@@ -44,8 +44,8 @@ $(document).ready(function() {
 			url: 'mod/basket_small_refresh.php',
 			dataType: 'json',
 			success: function(data) {
-				$.each(data, function(k, v) {
-					$("#basket_left ." + k + " span").text(v);
+				$.each(data, function(key, value) {
+					$("#basket_left ." + key + " span").text(value);
 				});
 			},
 			error: function(data) {

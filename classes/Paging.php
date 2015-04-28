@@ -12,7 +12,7 @@ class Paging {
 	
 	
 	// constructor
-	public function __construct($rows, $max = 10) {
+	public function __construct( $rows, $max = 10 ) {
 		$this->_records = $rows;
 		$this->_numb_of_records = count($this->_records);
 		$this->_max_pp = $max;
@@ -30,7 +30,7 @@ class Paging {
 	}
 	
 	
-	// offset property
+	// gets offset property
 	private function getOffset() {
 		$this->_offset = ($this->_current - 1) * $this->_max_pp;
 	}
@@ -115,11 +115,10 @@ class Paging {
 	
 	// display the pagination 
 	public function getPaging() {
+
 		$links = $this->getLinks();
+
 		if (!empty($links)) {
-
-
-
 			$out  = '<div class="pagination text-center"><ul class="pagination">';
 			$out .= $links;
 			$out .= "</ul></div>";

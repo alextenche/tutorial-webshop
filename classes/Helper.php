@@ -44,16 +44,16 @@ class Helper {
 	
 	// gets the (0 - width, 1 - height, 2 - type, 3 - attributes) of the picture
 	public static function getImgSize($image, $case) {
-		if(is_file($image)) {
-			$size = getimagesize($image);
+		if( is_file($image) ) {
+			$size = getimagesize( $image );
 			return $size[$case];
 		}
 	}
 	
 	
 	// shortens the given string to a given length
-	public static function shortenString($string, $len = 150) {
-		if (strlen($string) > $len) {
+	public static function shortenString( $string, $len = 150 ) {
+		if ( strlen($string) > $len ) {
 			$string = trim(substr($string, 0, $len));
 			$string = substr($string, 0, strrpos($string, " "))."&hellip;";
 		} else {

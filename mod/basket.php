@@ -9,7 +9,7 @@ if ( isset($_POST['job']) && isset($_POST['id']) ) {
 	$id = $_POST['id'];
 	
 	$objCatalogue = new Catalogue();
-	$product = $objCatalogue->getProduct($id);
+	$product = $objCatalogue->getProduct( $id );
 	
 	if (!empty($product)) {
 

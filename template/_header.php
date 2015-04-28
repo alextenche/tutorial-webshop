@@ -1,9 +1,13 @@
 <?php 
-	$objCatalogue = new Catalogue();
-	$cats = $objCatalogue->getCategories();
+$objCatalogue = new Catalogue();
+$cats = $objCatalogue->getCategories();
+	//var_dump($cats);
+	//die();
 
-	$objBusiness = new Business();
-	$business = $objBusiness->getBusiness();
+$objBusiness = new Business();
+$business = $objBusiness->getBusiness();
+	//var_dump($business);
+	//die();
 ?>
 <!DOCTYPE html>
 <head>
@@ -15,49 +19,49 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link href="css/custom.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
-	#navigation li {
-		list-style: none;
-		margin-left: 0;
-	}
-	#navigation{
-		margin-left: 0;
-		padding: 0;
-	}
-	.footer{
-	background: #333;
-	color: #fff;
-	height: 70px;
-	text-align:  center;
-	padding-top: 20px;
-}
-.panel-heading-dark{
-	background: #333333 !important;
-	color: #fff !important;
-}
-* {
-    margin: 0;
-}
-html, body {
-    height: 100%;
-}
-.container {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
-}
-.footer, .push {
-    height: 50px; /* .push must be the same height as .footer */
-}
-.panel-heading-green{
-	background: #3b7e14 !important;
-	color: #fff !important;
-}
+		#navigation li {
+			list-style: none;
+			margin-left: 0;
+		}
+		#navigation{
+			margin-left: 0;
+			padding: 0;
+		}
+		.footer{
+			background: #333;
+			color: #fff;
+			height: 70px;
+			text-align:  center;
+			padding-top: 20px;
+		}
+		.panel-heading-dark{
+			background: #333333 !important;
+			color: #fff !important;
+		}
+		* {
+			margin: 0;
+		}
+		html, body {
+			height: 100%;
+		}
+		.container {
+			min-height: 100%;
+			height: auto !important;
+			height: 100%;
+			margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+		}
+		.footer, .push {
+			height: 50px; /* .push must be the same height as .footer */
+		}
+		.panel-heading-green{
+			background: #3b7e14 !important;
+			color: #fff !important;
+		}
+		.act{color: red;}
 	</style>
 </head>
 
 <body>
-
 
 	<div class="navbar navbar-default">
 		<div class="container">
@@ -78,6 +82,7 @@ html, body {
 			</div>
 
 		</div>
+		
 	</div>
 
 
@@ -96,35 +101,36 @@ html, body {
 			}*/
 		?>
 	</div>
-	</div>-->
+</div>-->
 
 <div class="container">
 	<div class="row">
+
 		<div class="col-md-4" id="left">
+
 			<?php require_once('basket_left.php'); ?>
 
 			<div class="panel panel-default panel-list">
-					<div class="panel-heading panel-heading-dark">
-						<h3 class="panel-title">Categories</h3>
-					</div>
-
-					<!--List group-->
-					<ul class="list-group" id="navigation">
-					<?php foreach($cats as $cat) :
-					echo "<li class='list-group-item'><a href=\"?page=catalogue&amp;category=".$cat['id']."\"";
-					echo Helper::getActive(array('category' => $cat['id']));
-					echo ">";
-					echo Helper::encodeHtml($cat['name']);
-					echo "</a></li>";
-				endforeach; ?>
-						
-						<!--<li class="list-group-item"><a href="#">Other Console Games</a></li>-->
-					</ul>
+				<div class="panel-heading panel-heading-dark">
+					<h3 class="panel-title">Categories</h3>
 				</div>
 
+				<!-- List categories -->
+				<ul class="list-group" id="navigation">
 
-							
-		</div>
+					<?php // missing an if there a no categories !
+					foreach($cats as $cat) :
+						echo "<li class='list-group-item'><a href=\"?page=catalogue&amp;category=".$cat['id']."\"";
+						echo Helper::getActive(array('category' => $cat['id']));
+						echo ">";
+						echo Helper::encodeHtml($cat['name']);
+						echo "</a></li>";
+					endforeach; ?>
+
+				</ul>
+			</div>
+
+		</div><!-- end col-md-4 left -->
 
 
 		<div class="col-md-8" id="right">

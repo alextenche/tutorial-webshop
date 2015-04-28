@@ -3,13 +3,13 @@ class Session{
 
 
 	// set an item in SESSION
-	public static function setItem($id, $qty = 1){
+	public static function setItem( $id, $qty = 1 ){
 		$_SESSION['basket'][$id]['qty'] = $qty;
 	}
 
 	
 	// remove an item from SESSION
-	public static function removeItem($id, $qty = null){
+	public static function removeItem( $id, $qty = null ){
 		if($qty != null && $qty < $_SESSION['basket'][$id]['qty']){
 			$_SESSION['basket'][$id]['qty'] = ($_SESSION['basket'][$id]['qty'] - $qty);
 		} else {

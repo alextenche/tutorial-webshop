@@ -27,8 +27,9 @@ class Basket {
 	}
 	
 	
-	// show "Add to basket/Remove from basket" button
-	public static function activeButton($sess_id) {
+	// show "Add to basket / Remove from basket" button
+	public static function activeButton( $sess_id ) {
+
 		if(isset($_SESSION['basket'][$sess_id])) {
 			$id = 0;
 			$label = "Remove from basket";

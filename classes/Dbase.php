@@ -23,26 +23,35 @@ class Dbase{
 	}
 	
 	
-	// conntect to database
+	// conntect to database - PDO
 	private function connect(){
+		try{
+			$this->_conndb = new PDO("mysql:host=".$this->_host.";dbname=".$this->_name, $this->_user, $this->_password );
+			$this->_conndb->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+			$this->_conndb->exec("SET NAMES 'utf8'");
+		} catch (Exception $e){
+			echo "Could not connect to the databse - PDO connection";
+		exit;
+		}
 	
-		$this->_conndb = mysqli_connect($this->_host, $this->_user, $this->_password, $this->_name);		
-		mysqli_set_charset($this->_conndb, "utf8");
+		//$this->_conndb = mysqli_connect($this->_host, $this->_user, $this->_password, $this->_name);		
+		//mysqli_set_charset($this->_conndb, "utf8");
 		
 	}
 	
 	
-	// close connection
+	// close connection - PDO
 	public function close(){
-		if(!mysqli_close($this->_conndb)){
+		$this->_conndb = null;
+		if($this->_conndb != null){
 			die("Closing connection failed.");
 		}
 	}
 	
 	
-	// remove illegal characters
+	// remove illegal characters - PDO ??
 	public function escape( $value ){
-		if(function_exists("mysql_real_escape_string")){
+		/*if(function_exists("mysql_real_escape_string")){
 			if(get_magic_quotes_gpc()){
 				$value = stripcslashes($value);
 			}
@@ -51,19 +60,24 @@ class Dbase{
 			if(!get_magic_quotes_gpc()){
 				$value = addcslashes($value);
 			}
-		}
+		}*/
 		return $value;
 	}
 	
 	
-	// query the database
+	// query the database - PDO
 	public function query( $sql ){
+
 		$this->_last_query = $sql;
-		$result = mysqli_query($this->_conndb, $sql);
+
+		try{
+			$result = $this->_conndb->query($sql);
+		}catch (Exception $e){
+			echo "Data could not be retrieved from database - query";
+			exit;
+		}
+
 		$this->displayQuery($result);
-		
-		
-		
 		return $result;
 	}
 	
@@ -71,31 +85,32 @@ class Dbase{
 	// returns result from query to database
 	public function displayQuery($result){
 		if(!$result){
-			$output = "Database query failed: " . mysql_error() . "<br>";
+			$output = "Database query failed: <br>";
 			$output .= "Last SQL query was: " . $this->_last_query;
 			die($output);
 		} else {
-			$this->_affected_rows = mysqli_affected_rows($this->_conndb);
+			$this->_affected_rows = $result->rowCount();
 		}
 	
 	}
 	
 	
-	// fetch all
-	public function fetchAll($sql){
-		$result = $this->query($sql);
+	// fetch all records matching the $sql, return an array $out
+	public function fetchAll( $sql ){
+
+		$result = $this->query( $sql );
 		$out = array();
 		
-		while($row = mysqli_fetch_assoc($result)){
-			$out[] = $row;
-		}
-		mysqli_free_result($result);
+		$out = $result->fetchAll(PDO::FETCH_ASSOC);
+
+		unset( $result );// or: $result = null;
 		return $out;
 	}
 	
 	
-	// return the first record from an array
-	public function fetchOne($sql){
+	// return the first record from an array $out
+	public function fetchOne( $sql ){
+
 		$out = $this->fetchAll($sql);
 		return array_shift($out);
 	}

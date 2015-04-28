@@ -6,7 +6,7 @@ class Url {
 	public static $_params = array();
 	
 	
-	
+	// return url parameter
 	public static function getParam($par) {
 		return isset($_GET[$par]) && $_GET[$par] != "" ? $_GET[$par] : null;
 	}
@@ -26,7 +26,7 @@ class Url {
 	}
 	
 	
-	// polulate params array
+	// polulate parameters and their values and moves them in an asociative array
 	public static function getAll() {
 		if (!empty($_GET)) {
 			foreach($_GET as $key => $value) {
@@ -39,9 +39,11 @@ class Url {
 	
 	
 	// used in pagination
-	public static function getCurrentUrl($remove = null) {
+	public static function getCurrentUrl( $remove = null ) {
+
 		self::getAll();
 		$out = array();
+		
 		if (!empty($remove)) {
 			$remove = !is_array($remove) ? array($remove) : $remove;
 			foreach(self::$_params as $key => $value) {
@@ -88,17 +90,5 @@ class Url {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }
-?>

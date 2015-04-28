@@ -7,18 +7,20 @@ class Catalogue extends Application {
 	public static $_currency = '$';
 	
 	
-	
+	// returns all categories
 	public function getCategories() {
-		$sql = "SELECT * FROM `{$this->_table}`
-				ORDER BY `name` ASC";
+		$sql = "SELECT * FROM categories ORDER BY name ASC";
+		//var_dump($this->db->fetchAll($sql));
+		//die();
 		return $this->db->fetchAll($sql);
 	}
 	
 	
-	
+	// return one category specified by id
 	public function getCategory($id) {
-		$sql = "SELECT * FROM `{$this->_table}`
-				WHERE `id` = '".$this->db->escape($id)."'";
+		$sql = "SELECT * FROM {$this->_table} WHERE id = {$this->db->escape($id)}";
+		//var_dump($this->db->fetchOne($sql));
+		//die();
 		return $this->db->fetchOne($sql);
 	}
 	
@@ -79,7 +81,7 @@ class Catalogue extends Application {
 	}
 	
 	
-	// gets one product
+	// gets one product - for basket 
 	public function getProduct($id) {
 		$sql = "SELECT * FROM `{$this->_table_2}`
 				WHERE `id` = '".$this->db->escape($id)."'";
