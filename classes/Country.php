@@ -1,4 +1,5 @@
 <?php
+
 class Country extends Application{
 
 	// gets all countries from database
@@ -10,7 +11,7 @@ class Country extends Application{
 
 	
 	// get one county from database
-	public function getCountry($id = null){
+	public function getCountry( $id = null ){
 		if(!empty($id)){
 			$sql = "SELECT * FROM `countries`
 					WHERE `id` = '".$this->db->escape($id)."'";

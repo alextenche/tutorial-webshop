@@ -38,9 +38,11 @@ require_once('_header.php'); ?>
 						<?php foreach($out as $item) : ?>
 							<tr>
 								<td><?php echo Helper::encodeHTML($item['name']); ?></td>
-								<td><input type="text" name="qty-<?php echo $item['id'];?>" id="qty-<?php echo $item['id'];?>" class="fld_qty" value="<?php echo $session[$item['id']]['qty'];?>"/></td>
-								<td class="ta_r"><?php echo Catalogue::$_currency; ?><?php echo number_format($objBasket->itemTotal($item['price'], $session[$item['id']]['qty']), 2);?></td>
-								<td class="ta_r"><?php echo Basket::removeButton($item['id']);?></td>
+								<td><input type="text" name="qty-<?php echo $item['id']; ?>" id="qty-<?php echo $item['id']; ?>" 
+									class="fld_qty" value="<?php echo $session[$item['id']]['qty']; ?>"/></td>
+								<td class="ta_r"><?php echo Catalogue::$_currency; ?>
+									<?php echo number_format($objBasket->itemTotal($item['price'], $session[$item['id']]['qty']), 2); ?></td>
+								<td class="ta_r"><?php echo Basket::removeButton($item['id']); ?></td>
 							</tr>
 						<?php endforeach; ?>
 			
@@ -48,7 +50,7 @@ require_once('_header.php'); ?>
 							<tr>
 								<td colspan="2" class="br_td" >Sub-total:</td>
 								<td class="ta_r br_td"><?php echo Catalogue::$_currency; ?><?php echo number_format($objBasket->_sub_total, 2); ?></td>
-								<td class="ta_r br_td">&#160;</td>
+								<td class="ta_r br_td">&nbsp;</td>
 							</tr>
 							<tr>
 								<td colspan="2" class="br_td" >TVA(<?php echo $objBasket->_vat_rate; ?>%):</td>
@@ -64,7 +66,7 @@ require_once('_header.php'); ?>
 						</tr>
 					</table>
 	
-					<div class="dev br_td">&#160;</div>
+					<div class="dev br_td">&nbsp;</div>
 	
 					<div class="btn btn-default sbm sbm_blue fl_r">
 						<a href="?page=checkout" class="btn">Checkout</a>

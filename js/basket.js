@@ -20,6 +20,7 @@ $(document).ready(function() {
 	}
 	
 	
+	// remove from basket
 	function removeFromBasket() {
 		var item = $(this).attr('rel');
 		$.ajax({
@@ -56,7 +57,7 @@ $(document).ready(function() {
 	}
 	
 	
-	
+	// refresh BigBasket when update or remove item
 	function refreshBigBasket() {
 		$.ajax({
 			url: 'mod/basket_view.php',
@@ -111,7 +112,7 @@ $(document).ready(function() {
 	}
 	
 	
-		
+	// updates the basket when Enter is presses or update button pressed	
 	function updateBasket() {
 		$('#frm_basket :input').each(function() {
 			var sid = $(this).attr('id').split('-');

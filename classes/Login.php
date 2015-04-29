@@ -10,14 +10,14 @@ class Login {
 	public static $_login_admin = "aid"; // admin id
 	
 	public static $_valid_login = "valid";
-	
-	public static $_referrer = "refer"; // 
+
+	public static $_referrer = "refer";
 	
 	
 	// check if client is logged
-	public static function isLogged($case = null) {
-		if (!empty($case)) {
-			if (isset($_SESSION[self::$_valid_login]) && $_SESSION[self::$_valid_login] == 1) {
+	public static function isLogged( $case = null ) {
+		if ( !empty($case) ) {
+			if ( isset($_SESSION[self::$_valid_login]) && $_SESSION[self::$_valid_login] == 1 ) {
 				return isset($_SESSION[$case]) ? true : false;
 			}
 			return false;
@@ -27,8 +27,8 @@ class Login {
 	
 	 
 	// login front dashboard
-	public static function loginFront($id = null, $url = null) {
-		if (!empty($id)) {
+	public static function loginFront( $id = null, $url = null ) {
+		if ( !empty($id) ) {
 			$url = !empty($url) ? $url : self::$_dashboard_front;
 			$_SESSION[self::$_login_front] = $id;
 			$_SESSION[self::$_valid_login] = 1;
@@ -37,11 +37,7 @@ class Login {
 	}
 	
 	
-	
-	
-	
-	
-	
+
 	public static function loginAdmin($id = null, $url = null) {
 		if (!empty($id)) {
 			$url = !empty($url) ? $url : self::$_dashboard_admin;
@@ -53,14 +49,9 @@ class Login {
 	
 	
 	
-	
-	
-	
-	
-	
 	// restiric acces for unlogged clients
 	public static function restrictFront() {
-		if (!self::isLogged(self::$_login_front)) {
+		if ( !self::isLogged(self::$_login_front) ) {
 			$url = Url::cPage() != "logout" ?
 					self::$_login_page_front."&".self::$_referrer."=".Url::cPage() :
 					self::$_login_page_front;
@@ -69,11 +60,7 @@ class Login {
 	}
 	
 	
-	
-	
-	
-	
-	
+
 	public static function restrictAdmin() {
 		if (!self::isLogged(self::$_login_admin)) {
 			Helper::redirect(self::$_login_page_admin);

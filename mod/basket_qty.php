@@ -10,7 +10,7 @@ if (isset($_POST['qty']) && isset($_POST['id'])) {
 	$objCatalogue = new Catalogue();
 	$product = $objCatalogue->getProduct($id);
 	
-	if (!empty($product)) {
+	if ( !empty($product) ) {
 		
 		switch($val) {
 			case 0:
@@ -19,7 +19,7 @@ if (isset($_POST['qty']) && isset($_POST['id'])) {
 			default:
 				Session::setItem($id, $val);
 		}
-		
+	
 	}
 	
 }

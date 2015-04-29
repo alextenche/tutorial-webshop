@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 Login::restrictFront();
 
 $objUser = new User();
@@ -28,7 +29,7 @@ if(!empty($user)) {
 		
 	}
 
-	require_once('_header.php')?>
+	require_once('_header.php'); ?>
 
 	<h1>Checkout</h1>
 
@@ -37,10 +38,10 @@ if(!empty($user)) {
 	<?php echo !empty($mess) ? $mess : null; ?>
 
 	<form action="" method="post">
-		<table cellpadding="0" cellspacing="0" border="0" class="tbl_insert">
+		<table cellpadding="0" cellspacing="0" border="0" class="table table-striped tbl_insert">
 		
 			<tr>
-				<th><label for="first_name">First name: *</label></th>
+				<th><label for="first_name">First name: ****</label></th>
 				<td>
 					<?php echo $objValid->validate('first_name');?>
 					<input type="text" name="first_name" id="first_name" class="fld" 
@@ -105,8 +106,8 @@ if(!empty($user)) {
 			<tr>
 				<th><label for="country">Country:</label></th>
 				<td>
-					<?php echo $objValid->validate('country');?>
-					<?php echo $objForm->getCountriesSelect($user['country']);?>
+					<?php echo $objValid->validate('country'); ?>
+					<?php echo $objForm->getCountriesSelect($user['country']); ?>
 				</td>
 			</tr>
 			
@@ -120,7 +121,7 @@ if(!empty($user)) {
 			</tr>
 			
 			<tr>
-				<th>&nbsp</th>
+				<th>&nbsp;</th>
 				<td>
 					<label for="btn" class="sbm sbm_blue fl_l">
 						<input type="submit" id="btn" class="btn" value="Next" />
@@ -135,4 +136,4 @@ if(!empty($user)) {
 	require_once('_footer.php');
 } else {
 	Helper::redirect('page=error');
-} ?>
+}

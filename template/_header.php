@@ -69,7 +69,7 @@ $business = $objBusiness->getBusiness();
 				<a href="/eCommerce/" class="navbar-brand"><?php echo $business['name']; ?></a>
 			</div>
 
-			<div class="collapse navbar-collapse">
+			<!--<div class="collapse navbar-collapse">
 				<form class="navbar-form navbar-right">
 					<div class="form-group">
 						<input type="email" class="form-control" placeholder="Email">
@@ -79,7 +79,7 @@ $business = $objBusiness->getBusiness();
 					</div>
 					<button type="submit" class="btn btn-success">Log In</button>
 				</form>
-			</div>
+			</div>-->
 
 		</div>
 		

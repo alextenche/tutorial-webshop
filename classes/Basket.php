@@ -89,19 +89,18 @@ class Basket {
 	
 	
 	// return the total - for basket page
-	public function itemTotal($price = null, $qty = null) {
-		if (!empty($price) && !empty($qty)) {
+	public function itemTotal( $price = null, $qty = null ) {
+		if ( !empty($price) && !empty($qty) ) {
 			return round(($price * $qty), 2);
 		}
 	}
 	
 	
 	// create the remove from basket button for a products
-	public static function removeButton($id = null) {
-		if (!empty($id)) {
-			if (isset($_SESSION['basket'][$id])) {
-				$out  = "<a href=\"#\" class=\"btn btn-danger remove_basket red";
-				$out .= "\" rel=\"{$id}\">Remove</a>";
+	public static function removeButton( $id = null ) {
+		if ( !empty($id) ) {
+			if ( isset($_SESSION['basket'][$id]) ) {
+				$out  = '<a href="#" class="remove_basket btn btn-danger red" rel="' . $id . '">Remove</a>';
 				return $out;
 			}
 		}

@@ -64,8 +64,8 @@ class Helper {
 	
 	
 	// redirect to url passed as paramater
-	public static function redirect($url = null) {
-		if (!empty($url)) {
+	public static function redirect( $url = null ) {
+		if ( !empty($url) ) {
 			header("Location: {$url}");
 			exit;
 		}
@@ -73,7 +73,7 @@ class Helper {
 	
 	
 	// sets the date for new user registration
-	public static function setDate($case = null, $date = null) {
+	public static function setDate( $case = null, $date = null ) {
 		
 		$date = empty($date) ? time() : strtotime($date);
 		

@@ -123,9 +123,9 @@ class Dbase{
 	
 	
 	// prepares to insert into database a new user( or product ? )
-	public function prepareInsert($array = null) {
-		if (!empty($array)) {
-			foreach($array as $key => $value) {
+	public function prepareInsert( $array = null ) {
+		if ( !empty($array) ) {
+			foreach( $array as $key => $value ) {
 				$this->_insert_keys[] = $key;
 				$this->_insert_values[] = $this->escape($value);
 			}
@@ -134,8 +134,8 @@ class Dbase{
 	
 	
 	// insert new user( or product ) into the database	
-	public function insert($table = null) {
-		if (!empty($table) && !empty($this->_insert_keys) && !empty($this->_insert_values)) {
+	public function insert( $table = null ) {
+		if ( !empty($table) && !empty($this->_insert_keys) && !empty($this->_insert_values) ) {
 			$sql  = "INSERT INTO `{$table}` (`";
 			$sql .= implode("`, `", $this->_insert_keys);
 			$sql .= "`) VALUES ('";

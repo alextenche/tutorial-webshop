@@ -20,8 +20,8 @@ class Session{
 	
 	
 	// get what is stored in the session with the $name
-	public static function getSession($name = null){
-		if(!empty($name)){
+	public static function getSession( $name = null ){
+		if( !empty($name) ){
 			return isset($_SESSION[$name]) ? $_SESSION[$name] : null;
 		}
 	}

@@ -1,4 +1,5 @@
 <?php
+
 require_once('PHPMailer_v5.1/PHPMailer.php');
 	
 class Email{

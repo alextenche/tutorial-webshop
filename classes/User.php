@@ -1,4 +1,5 @@
 <?php
+
 class User extends Application{
 
 	private $_table = "clients";
@@ -6,7 +7,7 @@ class User extends Application{
 	
 	
 	// check if user exista and is active in database
-	public function isUser($email, $password) {
+	public function isUser( $email, $password ) {
 		$password = Login::string2hash($password);
 		$sql = "SELECT * FROM `{$this->_table}`
 				WHERE `email` = '".$this->db->escape($email)."'
@@ -21,8 +22,8 @@ class User extends Application{
 	}
 		
 	
-	// add a user
-	public function addUser($params = null, $password = null) {
+	// add a user when registration
+	public function addUser( $params = null, $password = null ) {
 	
 		if (!empty($params) && !empty($password)) {
 			$this->db->prepareInsert($params);
@@ -30,6 +31,7 @@ class User extends Application{
 				
 				// data for send email
 				$objEmail = new Email();
+				
 				if ($objEmail->process(1, array(
 					'email'		 => $params['email'],
 					'first_name' => $params['first_name'],
