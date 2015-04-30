@@ -18,8 +18,8 @@ if(!empty($user)) {
 		
 		$objValid->_special = array('email' => 'email');
 		
-		if($objValid->isValid()){
-			if($objUser->updateUser($objValid->_post, $user['id'])){
+		if( $objValid->isValid() ){
+			if( $objUser->updateUser($objValid->_post, $user['id']) ){
 				Helper::redirect('?page=summary');    // !!!!!!!!!
 			} else {
 				$mess  = "<p class=\"red\">There was a problem updating your details.<br />";
@@ -31,106 +31,145 @@ if(!empty($user)) {
 
 	require_once('_header.php'); ?>
 
-	<h1>Checkout</h1>
+	<div class="panel panel-default">
 
-	<p>Please check your details and click <strong>Next</strong>.</p>
+		<div class="panel-heading panel-heading-green">
+			<h1 class="panel-title">Checkout</h1>
+		</div>
+
+		<div class="panel-body">
+		
+			<br>
+
+			<p>Please check your details and click <strong>Next</strong>.</p>
 	
-	<?php echo !empty($mess) ? $mess : null; ?>
+			<?php echo !empty($mess) ? $mess : null; ?>
 
-	<form action="" method="post">
-		<table cellpadding="0" cellspacing="0" border="0" class="table table-striped tbl_insert">
+			<form action="" method="post">
+				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped tbl_insert">
 		
-			<tr>
-				<th><label for="first_name">First name: ****</label></th>
-				<td>
-					<?php echo $objValid->validate('first_name');?>
-					<input type="text" name="first_name" id="first_name" class="fld" 
-					value="<?php echo $objForm->stickyText('first_name', $user['first_name']);?>" />
-				</td>
-			</tr>
+					<tr>   
+						<th><label for="first_name">First name</label></th>
+						<td>
+							<?php echo $objValid->validate('first_name');?>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input type="text" class="form-control fld" name="first_name" id="first_name"
+									value="<?php echo $objForm->stickyText('first_name', $user['first_name']);?>">
+							</div>
+						</td>
+					</tr>
 		
-			<tr>
-				<th><label for="last_name">Last name: *</label></th>
-				<td>
-					<?php echo $objValid->validate('last_name');?>
-					<input type="text" name="last_name" id="last_name" class="fld" 
-					value="<?php echo $objForm->stickyText('last_name', $user['last_name']);?>" />
-				</td>
-			</tr>
+					<tr>
+						<th><label for="last_name">Last name</label></th>
+						<td>
+							<?php echo $objValid->validate('last_name');?>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input type="text" name="last_name" id="last_name" class="form-control fld" 
+									value="<?php echo $objForm->stickyText('last_name', $user['last_name']);?>" />
+							</div>
+						</td>
+					</tr>
 			
-			<tr>
-				<th><label for="adress_1">Address 1: *</label></th>
-				<td>
-					<?php echo $objValid->validate('address_1');?>
-					<input type="text" name="address_1" id="adress_1" class="fld" 
-					value="<?php echo $objForm->stickyText('address_1', $user['address_1']);?>" />
-				</td>
-			</tr>
+					<tr>
+						<th><label for="adress_1">Address</label></th>
+						<td>
+							<?php echo $objValid->validate('address_1');?>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+								<input type="text" name="address_1" id="adress_1" class="form-control fld" 
+									value="<?php echo $objForm->stickyText('address_1', $user['address_1']);?>" />
+							</div>
+						</td>
+					</tr>
 			
-			<tr>
-				<th><label for="adress_2">Address 2:</label></th>
-				<td>
-					<?php echo $objValid->validate('address_2');?>
-					<input type="text" name="address_2" id="address_2" class="fld" 
-					value="<?php echo $objForm->stickyText('address_2', $user['address_2']);?>" />
-				</td>
-			</tr>
+					<tr>
+						<th><label for="adress_2">Second Address</label></th>
+						<td>
+							<div class="input-group">
+								<?php echo $objValid->validate('address_2');?>
+								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+								<input type="text" name="address_2" id="address_2" class="form-control fld" 
+									value="<?php echo $objForm->stickyText('address_2', $user['address_2']);?>" />
+							</div>
+						</td>
+					</tr>
 			
-			<tr>
-				<th><label for="town">Town: *</label></th>
-				<td>
-					<?php echo $objValid->validate('town');?>
-					<input type="text" name="town" id="town" class="fld" 
-					value="<?php echo $objForm->stickyText('town', $user['town']);?>" />
-				</td>
-			</tr>
+					<tr>
+						<th><label for="town">Town</label></th>
+						<td>
+							<div class="input-group">
+								<?php echo $objValid->validate('town');?>
+								<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+								<input type="text" name="town" id="town" class="form-control fld" 
+									value="<?php echo $objForm->stickyText('town', $user['town']);?>" />
+							</div>
+						</td>
+					</tr>
 			
-			<tr>
-				<th><label for="county">County: *</label></th>
-				<td>
-					<?php echo $objValid->validate('county');?>
-					<input type="text" name="county" id="county" class="fld" 
-					value="<?php echo $objForm->stickyText('county', $user['county']);?>" />
-				</td>
-			</tr>
+					<tr>
+						<th><label for="county">County</label></th>
+						<td>
+							<?php echo $objValid->validate('county');?>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+								<input type="text" name="county" id="county" class="form-control fld" 
+									value="<?php echo $objForm->stickyText('county', $user['county']);?>" />
+							</div>
+						</td>
+					</tr>
 			
-			<tr>
-				<th><label for="post_code">Post code: *</label></th>
-				<td>
-					<?php echo $objValid->validate('post_code');?>
-					<input type="text" name="post_code" id="post_code" class="fld" 
-					value="<?php echo $objForm->stickyText('post_code', $user['post_code']);?>" />
-				</td>
-			</tr>
+					<tr>
+						<th><label for="post_code">Post code</label></th>
+						<td>
+							<?php echo $objValid->validate('post_code');?>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+								<input type="text" name="post_code" id="post_code" class="form-control fld" 
+									value="<?php echo $objForm->stickyText('post_code', $user['post_code']);?>" />
+							</div>
+						</td>
+					</tr>
 			
-			<tr>
-				<th><label for="country">Country:</label></th>
-				<td>
-					<?php echo $objValid->validate('country'); ?>
-					<?php echo $objForm->getCountriesSelect($user['country']); ?>
-				</td>
-			</tr>
+					<tr>
+						<th><label for="country">Country</label></th>
+						<td>
+							<?php echo $objValid->validate('country'); ?>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+								<?php echo $objForm->getCountriesSelect($user['country']); ?>
+							</div>
+						</td>
+					</tr>
 			
-			<tr>
-				<th><label for="email">Email address: *</label></th>
-				<td>
-					<?php echo $objValid->validate('email');?>
-					<input type="text" name="email" id="email" class="fld" 
-					value="<?php echo $objForm->stickyText('email', $user['email']);?>" />
-				</td>
-			</tr>
+					<tr>
+						<th><label for="email">Email address</label></th>
+						<td>
+							<?php echo $objValid->validate('email');?>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+								<input type="text" name="email" id="email" class="form-control fld" 
+									value="<?php echo $objForm->stickyText('email', $user['email']);?>" />
+							</div>
+						</td>
+					</tr>
 			
-			<tr>
-				<th>&nbsp;</th>
-				<td>
-					<label for="btn" class="sbm sbm_blue fl_l">
-						<input type="submit" id="btn" class="btn" value="Next" />
-					</label>
-				</td>
-			</tr>
+					<tr>
+						<th>&nbsp;</th>
+						<td>
+							<br>
+							<input type="submit" name="submit" id="btn" value="Next" class="btn btn-primary">
+						</td>
+					</tr>
 		
-		</table>
-	</form>
+				</table><!-- end table -->
+
+			</form><!-- end form -->
+
+	</div><!-- end panel-body -->
+
+</div><!-- end panel panel-default -->
 
 <?php 
 	require_once('_footer.php');

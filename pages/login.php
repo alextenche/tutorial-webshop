@@ -206,7 +206,7 @@ require_once('_header.php'); ?>
 						<?php echo $objValid->validate('email');?>
         				<?php echo $objValid->validate('email_duplicate');?>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 							<input type="text" class="form-control fld" id="email" name="email" placeholder="your email address"
 							 	value="<?php echo $objForm->stickyText('email'); ?>">
 						</div>
@@ -217,7 +217,7 @@ require_once('_header.php'); ?>
 						<?php echo $objValid->validate('password');?>
         				<?php echo $objValid->validate('password_mismatch');?>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 							<input type="password" class="form-control fld" id="password" name="password" placeholder="your password"
 							 	value="">
 						</div>
@@ -227,7 +227,7 @@ require_once('_header.php'); ?>
 						<label for="confirm_password">Confirm password</label>
 						<?php echo $objValid->validate('confirm_password');?>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 							<input type="password" class="form-control fld" id="confirm_password" name="confirm_password" placeholder="your password"
 							 	value="">
 						</div>

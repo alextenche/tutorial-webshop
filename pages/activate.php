@@ -1,12 +1,13 @@
 <?php
+
 $code = Url::getParam('code');
 
-if (!empty($code)) {
+if ( !empty($code) ) {
 	
 	$objUser = new User();
 	$user = $objUser->getUserByHash($code);
 	
-	if (!empty($user)) {
+	if ( !empty($user) ) {
 		
 		if ($user['active'] == 0) {
 			if ($objUser->makeActive($user['id'])) {
@@ -34,9 +35,3 @@ if (!empty($code)) {
 } else {
 	Helper::redirect("/?page=error");
 }
-
-
-
-
-
-

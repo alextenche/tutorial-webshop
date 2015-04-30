@@ -50,22 +50,20 @@ class User extends Application{
 	}
 	
 	
-	// for activation -good	
-	public function getUserByHash($hash = null) {
-		if (!empty($hash)) {
+	// returns the user depending on the hash (sended to email when user is registering)
+	public function getUserByHash( $hash = null ) {
+		if ( !empty($hash) ) {
 			$sql  = "SELECT * FROM `{$this->_table}`
 					WHERE `hash` = '";
 			$sql .= $this->db->escape($hash)."'";
 			return $this->db->fetchOne($sql);
 		}
 	}
-
 	
 	
-	
-	// activating the user with the activation code
-	public function makeActive($id = null) {
-		if (!empty($id)) {
+	// activating the user with the $id
+	public function makeActive( $id = null ) {
+		if ( !empty($id) ) {
 			$sql = "UPDATE `{$this->_table}`
 					SET `active` = 1
 					WHERE `id` = '".$this->db->escape($id)."'";
@@ -75,9 +73,9 @@ class User extends Application{
 	
 	
 	
-	// checking email address in db for duplicate
-	public function getByEmail($email = null){
-		if(!empty($email)){
+	// gets user from database with the $email - used in check for duplicate email 
+	public function getByEmail( $email = null ){
+		if( !empty($email) ){
 			$sql ="SELECT `id` FROM `{$this->_table}`
 					WHERE `email` = '".$this->db->escape($email)."'
 					AND `active` = 1";
@@ -87,9 +85,9 @@ class User extends Application{
 	
 	
 	
-	//
-	public function getUser($id = null){
-		if(!empty($id)) {
+	// gets records from a user with $id
+	public function getUser( $id = null ){
+		if( !empty($id) ) {
 			$sql ="SELECT * FROM `{$this->_table}`
 					WHERE `id` = '".$this->db->escape($id)."'";
 			return $this->db->fetchOne($sql);
@@ -97,9 +95,9 @@ class User extends Application{
 	}
 	
 	
-	//
-	public function updateUser($array = null, $id = null){
-		if(!empty($array) && !empty($id)){
+	// updates the users data (from $array) 
+	public function updateUser( $array = null, $id = null ){
+		if( !empty($array) && !empty($id) ){
 			$this->db->prepareUpdate($array);
 			if($this->db->update($this->_table, $id)){
 				return true;

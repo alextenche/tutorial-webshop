@@ -1,4 +1,5 @@
 <?php
+
 Login::restrictFront();
 
 $token1 = mt_rand();
@@ -18,8 +19,7 @@ if (!empty($session)) {
 	}
 }
 
-require_once("_header.php");
-?>
+require_once("_header.php");?>
 
 <h1>Order summary</h1>
 
@@ -109,5 +109,3 @@ require_once("_header.php");
 
 <?php
 require_once("_footer.php");
-
-?>

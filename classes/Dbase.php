@@ -151,27 +151,19 @@ class Dbase{
 	}
 	
 	
-	
-	
-	
-	// prepare update
-	public function prepareUpdate($array = null){
-		if(!empty($array)){
-			foreach($array as $key => $value){
+	// prepare update in database
+	public function prepareUpdate( $array = null ){
+		if( !empty($array) ){
+			foreach( $array as $key => $value ){
 				$this->_update_sets[] = "`{$key}` = '".$this->escape($value)."'";
 			}
 		}
 	}
 	
 	
-	
-	
-	
-	
-	
-	// update
-	public function update($table = null, $id = null){
-		if(!empty($table) && !empty($id) && !empty($this->_update_sets)){
+	// updates the records of an user with $id from $table
+	public function update( $table = null, $id = null ){
+		if( !empty($table) && !empty($id) && !empty($this->_update_sets) ){
 			$sql  = "UPDATE `{$table}` SET ";
 			$sql .= implode(", ", $this->_update_sets);
 			$sql .= " WHERE `id` = '".$this->escape($id)."'";
@@ -179,5 +171,5 @@ class Dbase{
 		}
 	}
 	
-	
+
 }

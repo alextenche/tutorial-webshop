@@ -52,7 +52,7 @@ class Form{
 		$objCountry = new Country();
 		$countries = $objCountry->getCountries();
 		if( !empty($countries) ) {
-			$out = '<select name="country" id="country" class="sel">';
+			$out = '<select name="country" id="country" class="sel form-control">';
 			if( empty($record) ){
 				$out .= '<option value="">Select one&hellip;</option>';
 			}
