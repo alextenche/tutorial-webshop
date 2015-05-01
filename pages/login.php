@@ -146,7 +146,7 @@ require_once('_header.php'); ?>
 						<label for="address_1">Address 1</label>
 						<?php echo $objValid->validate('address_1');?>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 							<input type="text" class="form-control fld" id="address_1" name="address_1" placeholder="first address"
 								value="<?php echo $objForm->stickyText('address_1'); ?>" >
 						</div>
@@ -156,7 +156,7 @@ require_once('_header.php'); ?>
 						<label for="address_2">Address 2:</label>
 						<?php echo $objValid->validate('address_2'); ?>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 							<input type="text" class="form-control fld" id="address_2" name="address_2" placeholder="second address - optional" 
 								value="<?php echo $objForm->stickyText('address_2'); ?>">
 						</div>
@@ -186,7 +186,7 @@ require_once('_header.php'); ?>
 						<label for="post_code">Post Code</label>
 						<?php echo $objValid->validate('post_code'); ?>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
 							<input type="text" class="form-control fld" id="post_code" name="post_code" placeholder="post code from your area"
 							 	value="<?php echo $objForm->stickyText('post_code'); ?>">
 						</div>

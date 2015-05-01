@@ -69,39 +69,23 @@ $business = $objBusiness->getBusiness();
 				<a href="/eCommerce/" class="navbar-brand"><?php echo $business['name']; ?></a>
 			</div>
 
-			<!--<div class="collapse navbar-collapse">
-				<form class="navbar-form navbar-right">
-					<div class="form-group">
-						<input type="email" class="form-control" placeholder="Email">
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Password">
-					</div>
-					<button type="submit" class="btn btn-success">Log In</button>
-				</form>
-			</div>-->
+			<?php if (Login::isLogged(Login::$_login_front)) : ?>
+				<div class="navbar-right">
+					<p id="logged_as" class="navbar-text">Logged in as <strong>
+						<?php echo Login::getFullNameFront(Session::getSession(Login::$_login_front)); ?>
+					</strong></p>
+					<a href="?page=orders"><button type="button" class="btn btn-default navbar-btn">My orders</button></a>
+					<a href="?page=logout"><button type="button" class="btn btn-default navbar-btn">Logout</button></a>			
+				</div>
+			<?php else : ?>
+				<div class="navbar-right">
+					<a href="?page=login"><button type="button" id="logged_as" class="btn btn-default navbar-btn">Login</button></a>
+				</div>
+			<?php endif; ?>
 
-		</div>
-		
-	</div>
+		</div><!-- end container -->
+	</div><!-- end navbar navbar-default -->
 
-
-
-	<!--<div id="header">
-	<div id="header_in">
-		<h5><a href="/"><?php echo $business['name']; ?></a></h5>
-		<?php
-			/*if (Login::isLogged(Login::$_login_front)) {
-				echo '<div id="logged_as">Logged in as: <strong>';
-				echo Login::getFullNameFront(Session::getSession(Login::$_login_front));
-				echo '</strong> | <a href="?page=orders">My orders</a>';
-				echo ' | <a href="?page=logout">Logout</a></div>';				
-			} else {
-				echo '<div id="logged_as"><a href="?page=login">Login</a></div>';
-			}*/
-		?>
-	</div>
-</div>-->
 
 <div class="container">
 	<div class="row">

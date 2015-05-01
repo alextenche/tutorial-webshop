@@ -1,4 +1,5 @@
 <?php
+
 class Login {
 
 	public static $_login_page_front = "?page=login";
@@ -75,33 +76,22 @@ class Login {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	public static function getFullNameFront($id = null) {
-		if (!empty($id)) {
+
+	// gets the full name of user with $id - display in navbar
+	public static function getFullNameFront( $id = null ) {
+		if ( !empty($id) ) {
 			$objUser = new User();
 			$user = $objUser->getUser($id);
-			if (!empty($user)) {
+			if ( !empty($user) ) {
 				return $user['first_name']." ".$user['last_name'];
 			}
 		}
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static function logout($case = null) {
-		if (!empty($case)) {
+	// logout user
+	public static function logout( $case = null ) {
+		if ( !empty($case) ) {
 			$_SESSION[$case] = null;
 			$_SESSION[self::$_valid_login] = null;
 			unset($_SESSION[$case]);
@@ -111,14 +101,5 @@ class Login {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
 
 }
