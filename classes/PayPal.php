@@ -1,4 +1,5 @@
 <?php
+
 class PayPal {
 
 	// environment
@@ -62,15 +63,8 @@ class PayPal {
 	private $_ipn_result;
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	public function __construct($cmd = '_cart') {
+
+	public function __construct( $cmd = '_cart' ) {
 		
 		$this->_url = $this->_environment == 'sandbox' ?
 						$this->_url_sandbox :
@@ -82,7 +76,6 @@ class PayPal {
 		$this->_cancel_payment = SITE_URL."?page=cancel";
 		$this->_notify_url = SITE_URL."?page=ipn";
 		$this->_log_file = ROOT_PATH.DS."log".DS."ipn.log";
-		
 	}
 	
 	

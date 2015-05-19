@@ -17,14 +17,17 @@ class Dbase{
 	public $_id;
 	
 	
+	
 	// constructor
 	public function __construct(){
 		$this->connect();
 	}
 	
 	
+
 	// conntect to database - PDO
-	private function connect(){
+	private function connect() {
+
 		try{
 			$this->_conndb = new PDO("mysql:host=".$this->_host.";dbname=".$this->_name, $this->_user, $this->_password );
 			$this->_conndb->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -33,12 +36,9 @@ class Dbase{
 			echo "Could not connect to the databse - PDO connection";
 		exit;
 		}
-	
-		//$this->_conndb = mysqli_connect($this->_host, $this->_user, $this->_password, $this->_name);		
-		//mysqli_set_charset($this->_conndb, "utf8");
-		
 	}
 	
+
 	
 	// close connection - PDO
 	public function close(){

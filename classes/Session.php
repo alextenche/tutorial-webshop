@@ -1,4 +1,5 @@
 <?php
+
 class Session{
 
 
@@ -28,7 +29,7 @@ class Session{
 	
 	
 	// set session
-	public static function setSession($name = null, $value = null){
+	public static function setSession( $name = null, $value = null ){
 		if(!empty($name) && !empty($value)){
 			$_SESSION[$name] = $value;
 		}
@@ -49,4 +50,3 @@ class Session{
 	}
 	
 }
-?>

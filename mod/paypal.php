@@ -1,4 +1,5 @@
 <?php
+
 require_once('../inc/autoload.php');
 
 // tokens
@@ -6,7 +7,7 @@ $token2 = Session::getSession('token2');
 $objForm = new Form();
 $token1 = $objForm->getPost('token');
 
-if ($token2 == Login::string2hash($token1)) {
+if ( $token2 == Login::string2hash($token1) ) {
 	
 	// create order
 	$objOrder = new Order();
@@ -17,12 +18,11 @@ if ($token2 == Login::string2hash($token1)) {
 		$items = $objOrder->getOrderItems();
 		
 		
-		if (!empty($order) && !empty($items)) {
+		if ( !empty($order) && !empty($items)  {
 		
 			$objBasket = new Basket();
 			$objCatalogue = new Catalogue();
 			$objPayPal = new PayPal();
-			
 			
 			foreach($items as $item) {
 				$product = $objCatalogue->getProduct($item['product']);
@@ -33,7 +33,6 @@ if ($token2 == Login::string2hash($token1)) {
 					$item['qty']
 				);
 			}
-			
 			
 			$objPayPal->_tax_cart = $objBasket->_vat;
 			

@@ -136,6 +136,7 @@ $(document).ready(function() {
 	
 	// proceed to paypal
 	if ($('.paypal').length > 0) {
+
 		$('.paypal').click(function() {
 			
 			var token = $(this).attr('id');
@@ -153,7 +154,6 @@ $(document).ready(function() {
 			
 		});
 	}
-	
 	
 	
 	// send to paypal

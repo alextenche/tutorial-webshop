@@ -1,24 +1,20 @@
 <?php
+
 class Order extends Application {
 
-	private $_table = 'orders';
+	private $_table   = 'orders';
 	private $_table_2 = 'orders_items';
 	private $_table_3 = 'statuses';
 	
-	private $_basket = array();
+	private $_basket  = array();
+	private $_items   = array();	
+	private $_fields  = array();
+	private $_values  = array();
 	
-	private $_items = array();
+	private $_id      = null;
 	
-	private $_fields = array();
-	private $_values = array();
-	
-	private $_id = null;
-	
-	
-	
-	
-	
-	// - good
+		
+	// - 
 	public function getItems() {
 	
 		$this->_basket = Session::getSession('basket');
@@ -32,21 +28,15 @@ class Order extends Application {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	// create new order
 	public function createOrder() {
 	
 		$this->getItems();
 		
-		if (!empty($this->_items)) {
+		if ( !empty($this->_items) ) {
 			
 			$objUser = new User();
-			$user = $objUser->getUser(Session::getSession(Login::$_login_front));
+			$user = $objUser->getUser( Session::getSession(Login::$_login_front) );
 			
 			if (!empty($user)) {
 			
@@ -95,18 +85,14 @@ class Order extends Application {
 	
 	}
 	
+
 	
-	
-	
-	
-	
-	
-	
-	
-	private function addItems($order_id = null) {
+	private function addItems( $order_id = null ) {
+
 		if (!empty($order_id)) {
-			
+
 			$error = array();
+
 			foreach($this->_items as $item) {
 				$sql = "INSERT INTO `{$this->_table_2}`
 						(`order`, `product`, `price`, `qty`)
@@ -115,51 +101,32 @@ class Order extends Application {
 					$error[] = $sql;
 				}
 			}
-			
-			return empty($error) ? true : false;
-			
+
+			return empty($error) ? true : false;			
 		}
 		return false;
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	public function getOrder($id = null) {
+
+	public function getOrder( $id = null ) {
 	
 		$id = !empty($id) ? $id : $this->_id;
 		
 		$sql = "SELECT * FROM `{$this->_table}`
 				WHERE `id` = '".$this->db->escape($id)."'";
 		return $this->db->fetchOne($sql);
-	
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public function getOrderItems($id = null) {
+
+	public function getOrderItems( $id = null ) {
 		
 		$id = !empty($id) ? $id : $this->_id;
 		
 		$sql = "SELECT * FROM `{$this->_table_2}`
 				WHERE `order` = '".$this->db->escape($id)."'";
 		return $this->db->fetchAll($sql);
-		
 	}
 	
 	

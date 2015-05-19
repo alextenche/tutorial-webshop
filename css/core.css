@@ -64,4 +64,6 @@ a:hover,#footer_in a,.add_to_basket:hover{text-decoration:none}
 #navigation li a,#basket_left dt,#basket_left dd{padding:1px 0}
 .catalogue_wrapper img,.tbl_repeat,.tbl_insert{margin-bottom:14px}
 .tbl_insert td,.fld,.fld_price,.sel,.tar,.tar_fixed{padding:3px}
-.dn {display:none}
+.dn {
+	display: none;
+}
