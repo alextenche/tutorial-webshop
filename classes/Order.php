@@ -165,14 +165,10 @@ class Order extends Application {
 	
 	
 	
-	
-	
-	
-	
-	
 	// get client orders
-	public function getClientOrders($client_id = null) {
-		if (!empty($client_id)) {
+	public function getClientOrders( $client_id = null ) {
+
+		if ( !empty($client_id) ) {
 			$sql = "SELECT * FROM `{$this->_table}`
 					WHERE `client` = '".$this->db->escape($client_id)."'
 					ORDER BY `date` DESC";

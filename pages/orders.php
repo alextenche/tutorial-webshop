@@ -1,15 +1,14 @@
-<?php 
+<?php
+
 Login::restrictFront();
 	
 $objOrder = new Order();
 $orders = $objOrder->getClientOrders(Session::getSession(Login::$_login_front));
 
-
 $objPaging = new Paging($orders, 5);
 $rows = $objPaging->getRecords();
 
-require_once('_header.php'); 
-?>
+require_once('_header.php'); ?>
 
 <h1>My orders</h1>
 
