@@ -18,47 +18,6 @@ $business = $objBusiness->getBusiness();
 	<title>eCommerce</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link href="css/custom.css" rel="stylesheet" type="text/css" />
-	<style type="text/css">
-		#navigation li {
-			list-style: none;
-			margin-left: 0;
-		}
-		#navigation{
-			margin-left: 0;
-			padding: 0;
-		}
-		.footer{
-			background: #333;
-			color: #fff;
-			height: 70px;
-			text-align:  center;
-			padding-top: 20px;
-		}
-		.panel-heading-dark{
-			background: #333333 !important;
-			color: #fff !important;
-		}
-		* {
-			margin: 0;
-		}
-		html, body {
-			height: 100%;
-		}
-		.container {
-			min-height: 100%;
-			height: auto !important;
-			height: 100%;
-			margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
-		}
-		.footer, .push {
-			height: 50px; /* .push must be the same height as .footer */
-		}
-		.panel-heading-green{
-			background: #3b7e14 !important;
-			color: #fff !important;
-		}
-		.act{color: red;}
-	</style>
 </head>
 
 <body>
