@@ -4,6 +4,18 @@ class OrderPDO{
 	
 	// init database variable
 	private $db;
+
+	private $_table   = 'orders';
+	private $_table_2 = 'orders_items';
+	private $_table_3 = 'statuses';
+	
+	private $_basket  = array();
+	private $_items   = array();	
+	private $_fields  = array();
+	private $_values  = array();
+	
+	private $_id      = null;
+
 	
 	
 	public function __construct(){
@@ -149,6 +161,22 @@ class OrderPDO{
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+
+	// get client orders
+	public function getClientOrders( $client_id = null ) {
+
+		if ( !empty($client_id) ) {
+			$this->db->query("SELECT * FROM $this->_table
+							  WHERE client = :client_id
+							  ORDER BY date DESC ";
+			$this->db->bind(':client_id', $client_id);
+
+			// assign result set
+			$results = $this->db->resultset();
+			return $results;
 		}
 	}
 		

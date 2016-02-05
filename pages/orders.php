@@ -2,7 +2,7 @@
 
 Login::restrictFront();
 	
-$objOrder = new Order();
+$objOrder = new OrderPDO();
 $orders = $objOrder->getClientOrders(Session::getSession(Login::$_login_front));
 
 $objPaging = new Paging($orders, 5);

@@ -1,14 +1,11 @@
-<?php 
+<?php
 $objCatalogue = new Catalogue();
 $cats = $objCatalogue->getCategories();
-	//var_dump($cats);
-	//die();
 
 $objBusiness = new Business();
 $business = $objBusiness->getBusiness();
-	//var_dump($business);
-	//die();
 ?>
+
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
@@ -34,7 +31,7 @@ $business = $objBusiness->getBusiness();
 						<?php echo Login::getFullNameFront(Session::getSession(Login::$_login_front)); ?>
 					</strong></p>
 					<a href="?page=orders"><button type="button" class="btn btn-default navbar-btn">My orders</button></a>
-					<a href="?page=logout"><button type="button" class="btn btn-default navbar-btn">Logout</button></a>			
+					<a href="?page=logout"><button type="button" class="btn btn-default navbar-btn">Logout</button></a>
 				</div>
 			<?php else : ?>
 				<div class="navbar-right">

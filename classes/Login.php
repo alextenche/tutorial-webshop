@@ -1,20 +1,19 @@
 <?php
-
 class Login {
 
 	public static $_login_page_front = "?page=login";
 	public static $_dashboard_front = "?page=orders";
 	public static $_login_front = "cid"; // client id
-	
-	public static $_login_page_admin = "/admin/";
+
+	public static $_login_page_admin = "/admin";
 	public static $_dashboard_admin = "/admin/?page=products";
 	public static $_login_admin = "aid"; // admin id
-	
+
 	public static $_valid_login = "valid";
 
 	public static $_referrer = "refer";
-	
-	
+
+
 	// check if client is logged
 	public static function isLogged( $case = null ) {
 		if ( !empty($case) ) {
@@ -25,8 +24,8 @@ class Login {
 		}
 		return false;
 	}
-	
-	 
+
+
 	// login front dashboard
 	public static function loginFront( $id = null, $url = null ) {
 		if ( !empty($id) ) {
@@ -36,8 +35,7 @@ class Login {
 			Helper::redirect($url);
 		}
 	}
-	
-	
+
 
 	public static function loginAdmin($id = null, $url = null) {
 		if (!empty($id)) {
@@ -47,9 +45,9 @@ class Login {
 			Helper::redirect($url);
 		}
 	}
-	
-	
-	
+
+
+
 	// restiric acces for unlogged clients
 	public static function restrictFront() {
 		if ( !self::isLogged(self::$_login_front) ) {
@@ -59,15 +57,14 @@ class Login {
 			Helper::redirect($url);
 		}
 	}
-	
-	
+
 
 	public static function restrictAdmin() {
 		if (!self::isLogged(self::$_login_admin)) {
 			Helper::redirect(self::$_login_page_admin);
 		}
 	}
-		
+
 
 	// encrypt the password with sha512
 	public static function string2hash($string = null) {
@@ -75,7 +72,7 @@ class Login {
 			return hash('sha512', $string);
 		}
 	}
-	
+
 
 	// gets the full name of user with $id - display in navbar
 	public static function getFullNameFront( $id = null ) {
@@ -87,8 +84,8 @@ class Login {
 			}
 		}
 	}
-	
-	
+
+
 	// logout user
 	public static function logout( $case = null ) {
 		if ( !empty($case) ) {
@@ -100,6 +97,6 @@ class Login {
 			session_destroy();
 		}
 	}
-	
+
 
 }

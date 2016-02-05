@@ -13,20 +13,20 @@ if($objForm->isPost('name')){
 		'description',
 		'price',
 	);
-	
+
 	$objValid->_required = array(
 		'category',
 		'name',
 		'description',
 		'price',
 	);
-	
+
 	if($objValid->isValid()){
-	
+
 		if($objCatalogue->addProduct($objValid->_post)){
-		
+
 			$objUpload= new Upload();
-			
+
 			if($objUpload->upload(CATALOGUE_PATH)){
 				$objCatalogue->updateProduct(array('image' => $objUpload->_names[0]), $objCatalogue->_id);
 				Helper::redirect('/ecommerce/admin'.Url::getCurrentUrl(array('action','id')).'&action=added');
@@ -48,7 +48,7 @@ if($objForm->isPost('name')){
 <form action="" method="post" enctype="multipart/form-data">
 
 	<table cellpadding="0" cellspacing="0" border="0" class="tbl_insert">
-	
+
 		<tr>
 			<th><label for="category">Category: *</label></th>
 			<td>
@@ -66,16 +66,16 @@ if($objForm->isPost('name')){
 				</select>
 			</td>
 		</tr>
-		
+
 		<tr>
 			<th><label for="name">Name: *</label></th>
 			<td>
 				<?php echo $objValid->validate('name');?>
-				<input type="text" name="name" id="name" 
+				<input type="text" name="name" id="name"
 				value="<?php echo $objForm->stickyText('name'); ?>" class="fld" />
 			</td>
 		</tr>
-		
+
 		<tr>
 			<th><label for="description">Description: *</label></th>
 			<td>
@@ -85,8 +85,8 @@ if($objForm->isPost('name')){
 				</textarea>
 			</td>
 		</tr>
-		
-		
+
+
 		<tr>
 			<th><label for="price">Price: *</label></th>
 			<td>
@@ -95,8 +95,8 @@ if($objForm->isPost('name')){
 				value="<?php echo $objForm->stickyText('price'); ?>" class="fld_price" />
 			</td>
 		</tr>
-		
-		
+
+
 		<tr>
 			<th><label for="image">Image: *</label></th>
 			<td>
@@ -104,8 +104,8 @@ if($objForm->isPost('name')){
 				<input type="file" name="image" id="image" size="30" />
 			</td>
 		</tr>
-		
-		
+
+
 		<tr>
 			<th>&nbsp;</th>
 			<td>
@@ -114,8 +114,8 @@ if($objForm->isPost('name')){
 				</label>
 			</td>
 		</tr>
-		
-	
+
+
 	</table>
 
 </form>
