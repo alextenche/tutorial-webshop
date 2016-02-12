@@ -5,17 +5,15 @@ class Catalogue extends Application {
 	private $_table_2 = 'products';
 	public $_path = 'media/catalogue/';
 	public static $_currency = '$';
-	
-	
-	// returns all categories
+
 	public function getCategories() {
-		$sql = "SELECT * FROM categories ORDER BY name ASC";
+		$sql = "SELECT * FROM `{$this->_table}` ORDER BY `name` ASC";
 		//var_dump($this->db->fetchAll($sql));
 		//die();
 		return $this->db->fetchAll($sql);
 	}
-	
-	
+
+
 	// return one category specified by id
 	public function getCategory($id) {
 		$sql = "SELECT * FROM {$this->_table} WHERE id = {$this->db->escape($id)}";
@@ -23,9 +21,9 @@ class Catalogue extends Application {
 		//die();
 		return $this->db->fetchOne($sql);
 	}
-	
-	
-	
+
+
+
 	public function addCategory($name = null) {
 		if (!empty($name)) {
 			$sql = "INSERT INTO `{$this->_table}`
@@ -33,9 +31,9 @@ class Catalogue extends Application {
 			return $this->db->query($sql);
 		}
 	}
-	
-	
-	
+
+
+
 	public function updateCategory($name = null, $id = null) {
 		if (!empty($name) && !empty($id)) {
 			$sql = "UPDATE `{$this->_table}`
@@ -45,23 +43,23 @@ class Catalogue extends Application {
 		}
 		return false;
 	}
-	
-	
-	
+
+
+
 	public function duplicateCategory($name = null, $id = null) {
 		if (!empty($name)) {
 			$sql  = "SELECT * FROM `{$this->_table}`
 					WHERE `name` = '".$this->db->escape($name)."'";
-			$sql .= !empty($id) ? 
-					" AND `id` != '".$this->db->escape($id)."'" : 
+			$sql .= !empty($id) ?
+					" AND `id` != '".$this->db->escape($id)."'" :
 					null;
 			return $this->db->fetchOne($sql);
 		}
 		return false;
 	}
-	
-	
-	
+
+
+
 	public function removeCategory($id = null) {
 		if (!empty($id)) {
 			$sql = "DELETE FROM `{$this->_table}`
@@ -70,8 +68,8 @@ class Catalogue extends Application {
 		}
 		return false;
 	}
-	
-	
+
+
 	// gets products from a category
 	public function getProducts($cat) {
 		$sql = "SELECT * FROM `{$this->_table_2}`
@@ -79,17 +77,17 @@ class Catalogue extends Application {
 				ORDER BY `date` DESC";
 		return $this->db->fetchAll($sql);
 	}
-	
-	
-	// gets one product - for basket 
+
+
+	// gets one product - for basket
 	public function getProduct($id) {
 		$sql = "SELECT * FROM `{$this->_table_2}`
 				WHERE `id` = '".$this->db->escape($id)."'";
 		return $this->db->fetchOne($sql);
 	}
-	
-	
-	
+
+
+
 	public function getAllProducts($srch = null) {
 		$sql = "SELECT * FROM `{$this->_table_2}`";
 		if (!empty($srch)) {
@@ -99,9 +97,9 @@ class Catalogue extends Application {
 		$sql .= " ORDER BY `date` DESC";
 		return $this->db->fetchAll($sql);
 	}
-	
-	
-	
+
+
+
 	public function addProduct($params = null) {
 		if (!empty($params)) {
 			$params['date'] = Helper::setDate();
@@ -112,18 +110,18 @@ class Catalogue extends Application {
 		}
 		return false;
 	}
-	
-	
-	
+
+
+
 	public function updateProduct($params = null, $id = null) {
 		if (!empty($params) && !empty($id)) {
 			$this->db->prepareUpdate($params);
 			return $this->db->update($this->_table_2, $id);
 		}
 	}
-	
-	
-	
+
+
+
 	public function removeProduct($id = null) {
 		if (!empty($id)) {
 			$product = $this->getProduct($id);
@@ -139,22 +137,22 @@ class Catalogue extends Application {
 		}
 		return false;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 ?>
