@@ -13,8 +13,8 @@ $business = $objBusiness->getBusiness();
 	<meta name="keywords" content="HTML,CSS,PHP,MySQL,ecommerce">
 	<meta name="author" content="Alex Tenche">
 	<title>eCommerce</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link href="css/custom.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css"   />
 </head>
 
 <body>
@@ -42,35 +42,28 @@ $business = $objBusiness->getBusiness();
 		</div><!-- end container -->
 	</div><!-- end navbar navbar-default -->
 
+	<div class="container">
+		<div class="row">
 
-<div class="container">
-	<div class="row">
+			<div class="col-md-4" id="left">
+				<?php require_once('basket_left.php'); ?>
+					<div class="panel panel-default panel-list">
+						<?php if(!empty($cats)) : ?>
+							<div class="panel-heading panel-heading-dark">
+								<h3 class="panel-title">Categories</h3>
+							</div>
+								<!-- List categories -->
+								<ul class="list-group" id="navigation">
+									<?php	foreach($cats as $cat) :
+										echo '<li class="list-group-item"><a href="?page=catalogue&category='.$cat['id'].'"'; //&amp;
+										echo Helper::getActive(array('category' => $cat['id']));
+										echo ">";
+										echo Helper::encodeHtml($cat['name']);
+										echo "</a></li>";
+									endforeach; ?>
+								</ul>
+						<?php endif; ?>
+					</div><!-- end panel panel-default panel-list -->
+				</div><!-- end col-md-4 left -->
 
-		<div class="col-md-4" id="left">
-
-			<?php require_once('basket_left.php'); ?>
-
-			<div class="panel panel-default panel-list">
-				<div class="panel-heading panel-heading-dark">
-					<h3 class="panel-title">Categories</h3>
-				</div>
-
-				<!-- List categories -->
-				<ul class="list-group" id="navigation">
-
-					<?php // missing an if there a no categories !
-					foreach($cats as $cat) :
-						echo "<li class='list-group-item'><a href=\"?page=catalogue&amp;category=".$cat['id']."\"";
-						echo Helper::getActive(array('category' => $cat['id']));
-						echo ">";
-						echo Helper::encodeHtml($cat['name']);
-						echo "</a></li>";
-					endforeach; ?>
-
-				</ul>
-			</div>
-
-		</div><!-- end col-md-4 left -->
-
-
-		<div class="col-md-8" id="right">
+				<div class="col-md-8" id="right">

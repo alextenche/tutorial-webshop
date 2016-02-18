@@ -4,29 +4,21 @@ class Url {
 	public static $_page = "page";
 	public static $_folder = PAGES_DIR;
 	public static $_params = array();
-	
-	
-	// return url parameter
+
 	public static function getParam($par) {
 		return isset($_GET[$par]) && $_GET[$par] != "" ? $_GET[$par] : null;
 	}
-	
-	
-	// return current page
+
 	public static function cPage() {
 		return isset($_GET[self::$_page]) ? $_GET[self::$_page] : 'index';
 	}
-	
-	
-	// retuns a page or an error page
+
 	public static function getPage() {
 		$page = self::$_folder . DS . self::cPage() . ".php";
 		$error = self::$_folder . DS . "error.php";
 		return is_file($page) ? $page : $error;
 	}
-	
-	
-	// polulate parameters and their values and moves them in an asociative array
+
 	public static function getAll() {
 		if (!empty($_GET)) {
 			foreach($_GET as $key => $value) {
@@ -36,14 +28,10 @@ class Url {
 			}
 		}
 	}
-	
-	
-	// used in pagination
-	public static function getCurrentUrl( $remove = null ) {
 
+	public static function getCurrentUrl($remove = null) {
 		self::getAll();
 		$out = array();
-		
 		if (!empty($remove)) {
 			$remove = !is_array($remove) ? array($remove) : $remove;
 			foreach(self::$_params as $key => $value) {
@@ -55,19 +43,16 @@ class Url {
 		foreach(self::$_params as $key => $value) {
 			$out[] = $key . "=" . $value;
 		}
-		return "?" . implode("&", $out);  // modified "/?" in "?"
-		
+		return "?" . implode("&", $out);
 	}
-	
-	
-	// used in login page
+
 	public static function getReferrerUrl() {
 		$page = self::getParam(Login::$_referrer);
 		return !empty($page) ? "?page={$page}" : null;
 	}
-	
-	
-	
+
+
+
 	public static function getParams4Search($remove = null) {
 		self::getAll();
 		$out = array();
@@ -89,6 +74,6 @@ class Url {
 			return implode("", $out);
 		}
 	}
-	
-		
+
+
 }

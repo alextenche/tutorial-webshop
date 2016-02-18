@@ -1,5 +1,4 @@
 <?php
-
 require_once("../inc/autoload.php");
 $objBasket = new Basket();
 $out = array();

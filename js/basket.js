@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	
+
 	initBinds();
-	
+
 	function initBinds() {
 		if ($('.remove_basket').length > 0) {
 			$('.remove_basket').bind('click', removeFromBasket);
@@ -18,9 +18,7 @@ $(document).ready(function() {
 			});
 		}
 	}
-	
-	
-	// remove from basket
+
 	function removeFromBasket() {
 		var item = $(this).attr('rel');
 		$.ajax({
@@ -37,9 +35,7 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
-	
-	
+
 	function refreshSmallBasket() {
 		$.ajax({
 			url: 'mod/basket_small_refresh.php',
@@ -53,11 +49,8 @@ $(document).ready(function() {
 				alert("An error has occurred - refreshSmallBasket");
 			}
 		});
-	
 	}
-	
-	
-	// refresh BigBasket when update or remove item
+
 	function refreshBigBasket() {
 		$.ajax({
 			url: 'mod/basket_view.php',
@@ -69,19 +62,17 @@ $(document).ready(function() {
 			error: function(data) {
 				alert('An error has occurred - refreshBigBasket');
 			}
-		});	
+		});
 	}
-	
-	
-	
+
+
 	if ($(".add_to_basket").length > 0) {
-	
 		$(".add_to_basket").click(function() {
-		
+
 			var trigger = $(this);
 			var param = trigger.attr("rel");
 			var item = param.split("_");
-			
+
 			$.ajax({
 				type: 'post',
 				url: 'mod/basket.php',
@@ -107,12 +98,9 @@ $(document).ready(function() {
 				}
 			});
 			return false;
-			
 		});
 	}
-	
-	
-	// updates the basket when Enter is presses or update button pressed	
+
 	function updateBasket() {
 		$('#frm_basket :input').each(function() {
 			var sid = $(this).attr('id').split('-');
@@ -131,31 +119,31 @@ $(document).ready(function() {
 			});
 		});
 	}
-	
-	
-	
+
+
+
 	// proceed to paypal
 	if ($('.paypal').length > 0) {
 
 		$('.paypal').click(function() {
-			
+
 			var token = $(this).attr('id');
 			var image = "<div style=\"text-align:center\">";
 			image = image + "<img src=\"images/loadinfo.net.gif\"";
 			image = image + " alt=\"Proceeding to PayPal\" />";
 			image = image + "<br />Please wait while we are redirecting you to PayPal...";
 			image = image + "</div><div id=\"frm_pp\"></div>";
-			
+
 			$('#big_basket').fadeOut(200, function() {
 				$(this).html(image).fadeIn(200, function() {
 					send2PP(token);
 				});
 			});
-			
+
 		});
 	}
-	
-	
+
+
 	// send to paypal
 	function send2PP(token) {
 		$.ajax({
@@ -170,20 +158,9 @@ $(document).ready(function() {
 			},
 			error: function() {
 				alert('An error has occurred - send to paypal');
-			}		
+			}
 		});
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 });

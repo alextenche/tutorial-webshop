@@ -8,21 +8,14 @@ class Catalogue extends Application {
 
 	public function getCategories() {
 		$sql = "SELECT * FROM `{$this->_table}` ORDER BY `name` ASC";
-		//var_dump($this->db->fetchAll($sql));
-		//die();
 		return $this->db->fetchAll($sql);
 	}
 
-
-	// return one category specified by id
 	public function getCategory($id) {
-		$sql = "SELECT * FROM {$this->_table} WHERE id = {$this->db->escape($id)}";
-		//var_dump($this->db->fetchOne($sql));
-		//die();
+		$sql = "SELECT * FROM `{$this->_table}`
+						WHERE `id` = '" . $this->db->escape($id) ."'";
 		return $this->db->fetchOne($sql);
 	}
-
-
 
 	public function addCategory($name = null) {
 		if (!empty($name)) {
@@ -31,8 +24,6 @@ class Catalogue extends Application {
 			return $this->db->query($sql);
 		}
 	}
-
-
 
 	public function updateCategory($name = null, $id = null) {
 		if (!empty($name) && !empty($id)) {
@@ -43,8 +34,6 @@ class Catalogue extends Application {
 		}
 		return false;
 	}
-
-
 
 	public function duplicateCategory($name = null, $id = null) {
 		if (!empty($name)) {
@@ -58,31 +47,25 @@ class Catalogue extends Application {
 		return false;
 	}
 
-
-
 	public function removeCategory($id = null) {
 		if (!empty($id)) {
 			$sql = "DELETE FROM `{$this->_table}`
-					WHERE `id` = '".$this->db->escape($id)."'";
+							WHERE `id` = '".$this->db->escape($id)."'";
 			$this->db->query($sql);
 		}
 		return false;
 	}
 
-
-	// gets products from a category
 	public function getProducts($cat) {
 		$sql = "SELECT * FROM `{$this->_table_2}`
-				WHERE `category` = '".$this->db->escape($cat)."'
-				ORDER BY `date` DESC";
+						WHERE `category` = '" . $this->db->escape($cat) . "'
+						ORDER BY `date` DESC";
 		return $this->db->fetchAll($sql);
 	}
 
-
-	// gets one product - for basket
 	public function getProduct($id) {
 		$sql = "SELECT * FROM `{$this->_table_2}`
-				WHERE `id` = '".$this->db->escape($id)."'";
+						WHERE `id` = '" . $this->db->escape($id) . "'";
 		return $this->db->fetchOne($sql);
 	}
 
