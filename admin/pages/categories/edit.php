@@ -19,7 +19,7 @@ if(!empty($id)){
 			$name = $objForm->getPost('name');
 			
 			if($objCatalogue->duplicateCategory($name, $id)){
-				$objValid->add2Errors('name_duplicate');
+				$objValid->addToErrors('name_duplicate');
 			}
 				
 			if($objValid->isValid()){

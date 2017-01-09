@@ -8,7 +8,7 @@ class User extends Application{
 	
 	// check if user exista and is active in database
 	public function isUser( $email, $password ) {
-		$password = Login::string2hash($password);
+		$password = Login::stringToHash($password);
 		$sql = "SELECT * FROM `{$this->_table}`
 				WHERE `email` = '".$this->db->escape($email)."'
 				AND `password` = '".$this->db->escape($password)."'

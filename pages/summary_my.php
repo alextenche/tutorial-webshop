@@ -2,7 +2,7 @@
 Login::restrictFront();
 
 $token1 = mt_rand();
-$token2 = Login::string2hash($token1);
+$token2 = Login::stringToHash($token1);
 Session::setSession('token2', $token2);
 
 $objBasket = new Basket();

@@ -22,7 +22,7 @@ $business = $objBusiness->getBusiness();
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="/eCommerce/" class="navbar-brand"><?php echo $business['name']; ?></a>
+				<a href="/tutorial-webshop/" class="navbar-brand"><?php echo $business['name']; ?></a>
 			</div>
 
 			<?php if (Login::isLogged(Login::$_login_front)) : ?>

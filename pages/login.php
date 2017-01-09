@@ -15,7 +15,7 @@ if( $objForm->isPost('login_email') ){
 						  $objForm->getPost('login_password')) ){
 		Login::loginFront($objUser->_id, Url::getReferrerUrl());
 	} else {
-		$objValid->add2Errors('login');
+		$objValid->addToErrors('login');
 	}
 }
 
@@ -36,7 +36,7 @@ if($objForm->isPost('first_name')) {
 	$pass_2 = $objForm->getPost('confirm_password');
 	
 	if (!empty($pass_1) && !empty($pass_2) && $pass_1 != $pass_2) {
-		$objValid->add2Errors('password_mismatch');
+		$objValid->addToErrors('password_mismatch');
 	}
 	
 	// the user identified with the email
@@ -44,7 +44,7 @@ if($objForm->isPost('first_name')) {
 	$user = $objUser->getByEmail($email);
 	
 	if (!empty($user)) {
-		$objValid->add2Errors('email_duplicate');
+		$objValid->addToErrors('email_duplicate');
 	}
 	
 	

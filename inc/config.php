@@ -1,6 +1,6 @@
 <?php
-if(!isset($_SESSION)) {
-	session_start();
+if (!isset($_SESSION)) {
+    session_start();
 }
 
 // site domain name with http
@@ -28,17 +28,17 @@ defined("INC_DIR") || define("INC_DIR", "inc");
 defined("TEMPLATE_DIR") || define("TEMPLATE_DIR", "template");
 
 // emails path
-defined("EMAILS_PATH") || define("EMAILS_PATH", ROOT_PATH.DS."emails");
+defined("EMAILS_PATH") || define("EMAILS_PATH", ROOT_PATH . DS . "emails");
 
 // catalogue images path
-defined("CATALOGUE_PATH") || define("CATALOGUE_PATH", ROOT_PATH.DS."media".DS."catalogue");
+defined("CATALOGUE_PATH") || define("CATALOGUE_PATH", ROOT_PATH . DS . "media" . DS . "catalogue");
 
 // add all above directories to the include path
 set_include_path(implode(PATH_SEPARATOR, array(
-								realpath(ROOT_PATH . DS . CLASSES_DIR),
-								realpath(ROOT_PATH . DS . PAGES_DIR),
-								realpath(ROOT_PATH . DS . MOD_DIR),
-								realpath(ROOT_PATH . DS . INC_DIR),
-								realpath(ROOT_PATH . DS . TEMPLATE_DIR),
-								get_include_path()
+    realpath(ROOT_PATH . DS . CLASSES_DIR),
+    realpath(ROOT_PATH . DS . PAGES_DIR),
+    realpath(ROOT_PATH . DS . MOD_DIR),
+    realpath(ROOT_PATH . DS . INC_DIR),
+    realpath(ROOT_PATH . DS . TEMPLATE_DIR),
+    get_include_path()
 )));

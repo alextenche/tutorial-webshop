@@ -1,3 +1,6 @@
-<?php require_once('_header.php'); ?>
+<?php
+require_once(__DIR__ . '/../template/_header.php');
 
-<?php require_once('_footer.php'); ?>
+echo "welcome :)";
+
+require_once(__DIR__ . '/../template/_footer.php');

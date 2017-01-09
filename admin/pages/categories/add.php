@@ -12,7 +12,7 @@ if($objForm->isPost('name')){
 	$name = $objForm->getPost('name');
 	
 	if($objCatalogue->duplicateCategory($name)){
-		$objValid->add2Errors('name_duplicate');
+		$objValid->addToErrors('name_duplicate');
 							   
 	}
 

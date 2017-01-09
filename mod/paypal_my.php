@@ -6,7 +6,7 @@ $token2 = Session::getSession('token2');
 $objForm = new Form();
 $token1 = $objForm->getPost('token');
 
-if($token2 == Login::string2hash($token1)){
+if($token2 == Login::stringToHash($token1)){
 
 	// create order
 	$objOrder = new order();

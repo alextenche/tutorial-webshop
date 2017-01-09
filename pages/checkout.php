@@ -5,29 +5,29 @@ Login::restrictFront();
 $objUser = new User();
 $user = $objUser->getUser(Session::getSession(Login::$_login_front));
 
-if(!empty($user)) {
+if (!empty($user)) {
 
-	$objForm = new Form();
-	$objValid = new Validation($objForm);
+    $objForm = new Form();
+    $objValid = new Validation($objForm);
 
-	if($objForm->isPost('first_name')){
+    if ($objForm->isPost('first_name')) {
 
-		$objValid->_expected = array('first_name', 'last_name', 'address_1', 'address_2', 'town', 'county', 'post_code', 'country', 'email');
-		$objValid->_required = array('first_name', 'last_name', 'address_1', 'town', 'county', 'post_code', 'country', 'email');
-		$objValid->_special = array('email' => 'email');
+        $objValid->_expected = array('first_name', 'last_name', 'address_1', 'address_2', 'town', 'county', 'post_code', 'country', 'email');
+        $objValid->_required = array('first_name', 'last_name', 'address_1', 'town', 'county', 'post_code', 'country', 'email');
+        $objValid->_special = array('email' => 'email');
 
-		if( $objValid->isValid() ){
-			if( $objUser->updateUser($objValid->_post, $user['id']) ){
-				Helper::redirect('?page=summary');    // !!!!!!!!!
-			} else {
-				$mess  = "<p class=\"red\">There was a problem updating your details.<br />";
-				$mess .= "Please contact administrator.</p>";
-			}
-		}
+        if ($objValid->isValid()) {
+            if ($objUser->updateUser($objValid->_post, $user['id'])) {
+                Helper::redirect('?page=summary');    // !!!!!!!!!
+            } else {
+                $mess = "<p class=\"red\">There was a problem updating your details.<br />";
+                $mess .= "Please contact administrator.</p>";
+            }
+        }
 
-	}
+    }
 
-	require_once('_header.php'); ?>
+    require_once(__DIR__ . '/../template/_header.php'); ?>
 
 	<div class="panel panel-default">
 
@@ -160,7 +160,7 @@ if(!empty($user)) {
 						</td>
 					</tr>
 
-				</table><!-- end table -->
+				</table>
 
 			</form><!-- end form -->
 
@@ -169,7 +169,7 @@ if(!empty($user)) {
 </div><!-- end panel panel-default -->
 
 <?php
-	require_once('_footer.php');
+	require_once(__DIR__ . '/../template/_footer.php');
 } else {
 	Helper::redirect('page=error');
 }

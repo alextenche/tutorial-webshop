@@ -13,11 +13,11 @@ if($objForm->isPost('login_email')){
 	if($objAdmin->isUser($objForm->getPost('login_email'), $objForm->getPost('login_password'))){
 		Login::loginAdmin($objAdmin->_id, Url::getReferrerUrl());
 	} else {
-		$objValid->add2Errors('login');
+		$objValid->addToErrors('login');
 	}
 }
 
-echo Login::string2hash('admin');
+echo Login::stringToHash('admin');
 
 require_once('template/_header.php');?>
 
