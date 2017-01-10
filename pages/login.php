@@ -1,114 +1,131 @@
 <?php
 
-if ( Login::isLogged(Login::$_login_front) ) {
-	Helper::redirect(Login::$_dashboard_front);
+if (Login::isLogged(Login::$_login_front)) {
+    Helper::redirect(Login::$_dashboard_front);
 }
-
 
 $objForm = new Form();
 $objValid = new Validation($objForm);
 $objUser = new User();
 
-// login form
-if( $objForm->isPost('login_email') ){
-	if( $objUser->isUser( $objForm->getPost('login_email'),
-						  $objForm->getPost('login_password')) ){
-		Login::loginFront($objUser->_id, Url::getReferrerUrl());
-	} else {
-		$objValid->addToErrors('login');
-	}
+if ($objForm->isPost('login_email')) {
+    if ($objUser->isUser($objForm->getPost('login_email'), $objForm->getPost('login_password'))) {
+        Login::loginFront($objUser->_id, Url::getReferrerUrl());
+    } else {
+        $objValid->addToErrors('login');
+    }
 }
 
+if ($objForm->isPost('first_name')) {
+    $objValid->_expected = array(
+        'first_name',
+        'last_name',
+        'address_1',
+        'address_2',
+        'town',
+        'county',
+        'post_code',
+        'country',
+        'email',
+        'password',
+        'confirm_password'
+    );
+    $objValid->_required = array(
+        'first_name',
+        'last_name',
+        'address_1',
+        'town',
+        'county',
+        'post_code',
+        'country',
+        'email',
+        'password',
+        'confirm_password'
+    );
+    $objValid->_special = array('email' => 'email');
+    $objValid->_post_remove = array('confirm_password');
+    $objValid->_post_format = array('password' => 'password');
 
-// registration form
-if($objForm->isPost('first_name')) {
+    // validate password
+    $pass_1 = $objForm->getPost('password');
+    $pass_2 = $objForm->getPost('confirm_password');
 
-	$objValid->_expected = array('first_name', 'last_name', 'address_1', 'address_2', 'town', 'county', 'post_code',
-	 							 'country', 'email', 'password', 'confirm_password');
-	$objValid->_required = array('first_name', 'last_name', 'address_1', 'town', 'county', 'post_code', 'country', 
-								 'email', 'password', 'confirm_password');	
-	$objValid->_special = array('email' => 'email');
-	$objValid->_post_remove = array('confirm_password');	
-	$objValid->_post_format = array('password' => 'password');
-	
-	// validate password
-	$pass_1 = $objForm->getPost('password');
-	$pass_2 = $objForm->getPost('confirm_password');
-	
-	if (!empty($pass_1) && !empty($pass_2) && $pass_1 != $pass_2) {
-		$objValid->addToErrors('password_mismatch');
-	}
-	
-	// the user identified with the email
-	$email = $objForm->getPost('email');
-	$user = $objUser->getByEmail($email);
-	
-	if (!empty($user)) {
-		$objValid->addToErrors('email_duplicate');
-	}
-	
-	
-	if ($objValid->isValid()) {
-		
-		// add hash for activating account
-		$objValid->_post['hash'] = mt_rand().date('YmdHis').mt_rand();
-		
-		// add registration date
-		$objValid->_post['date'] = Helper::setDate();
-		
-		
-		if ($objUser->addUser($objValid->_post, $objForm->getPost('password'))) {
-			Helper::redirect('?page=registered');
-		} else {
-			Helper::redirect('?page=registered-failed');
-		}	
-	}
-	
-	
+    if (!empty($pass_1) && !empty($pass_2) && $pass_1 != $pass_2) {
+        $objValid->addToErrors('password_mismatch');
+    }
+
+    // the user identified with the email
+    $email = $objForm->getPost('email');
+    $user = $objUser->getByEmail($email);
+
+    if (!empty($user)) {
+        $objValid->addToErrors('email_duplicate');
+    }
+
+
+    if ($objValid->isValid()) {
+
+        // add hash for activating account
+        $objValid->_post['hash'] = mt_rand() . date('YmdHis') . mt_rand();
+
+        // add registration date
+        $objValid->_post['date'] = Helper::setDate();
+
+
+        if ($objUser->addUser($objValid->_post, $objForm->getPost('password'))) {
+            Helper::redirect('?page=registered');
+        } else {
+            Helper::redirect('?page=registered-failed');
+        }
+    }
+
+
 }
 
-require_once('_header.php'); ?>
+require_once(__DIR__ . '/../template/_header.php');
+?>
 
-<div class="panel panel-default">
+    <div class="panel panel-default">
 
-	<div class="panel-heading panel-heading-green">
-		<h1 class="panel-title">Login</h1>
-	</div>
+        <div class="panel-heading panel-heading-green">
+            <h1 class="panel-title">Login</h1>
+        </div>
 
-	<div class="panel-body">
+        <div class="panel-body">
 
-		<form role="form" action="" method="POST">
-			<fieldset>
-				<br>
-				<div class="row">
-					<div class="col-sm-12 col-md-10  col-md-offset-1 ">
-						<div class="form-group">
-							<?php echo $objValid->validate('login'); ?>
-							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-								<input class="form-control fld" id="login_email" placeholder="Username" name="login_email" type="text" value="">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-								<input class="form-control fld" id="login_password" placeholder="Password" name="login_password" type="password" value="">
-							</div>
-						</div>
-						<div class="form-group">
-							<input type="submit" class="btn btn-primary" id="btn_login" value="Log in">
-						</div>
-					</div>
-				</div>
-			</fieldset>
-		</form><!-- end login form -->
+            <form role="form" action="" method="POST">
+                <fieldset>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                            <div class="form-group">
+                                <?php echo $objValid->validate('login'); ?>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input class="form-control fld" id="login_email" placeholder="user email"
+                                           name="login_email" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input class="form-control fld" id="login_password" placeholder="password"
+                                           name="login_password" type="password" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" id="btn_login" value="Log in">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
 
-	</div><!-- end panel-body -->
+        </div>
 
-</div><!-- end panel panel-default -->
+    </div>
 
 <hr>
-<!--<div class="dev br_td">&#160;</div>-->
 
 <div class="panel panel-default">
 
@@ -197,7 +214,7 @@ require_once('_header.php'); ?>
 						<?php echo $objValid->validate('country'); ?>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-							<?php echo $objForm->getCountriesSelect(); // 229 - UK ?>
+							<?php echo $objForm->getCountriesSelect(); ?>
 						</div>
 					</div>
 
@@ -257,4 +274,4 @@ require_once('_header.php'); ?>
 </div><!-- end panel-body -->
 </div><!-- end panel panel-default -->
 
-<?php require_once('_footer.php');
+<?php require_once(__DIR__ .'/../template/_footer.php');

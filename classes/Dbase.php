@@ -2,7 +2,6 @@
 
 class Dbase
 {
-
     private $_host = "localhost";
     private $_user = "root";
     private $_password = "";
